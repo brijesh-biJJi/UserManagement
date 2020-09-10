@@ -10,33 +10,23 @@
 <link rel="stylesheet" href="../css/toolbar.css">
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="brand">
-	          <span id="lblCompanyName" class="custom-font">User Management</span>
-	    </div>
-		<div class="container-fluid">
-                    <div id="tour-fullwidth" class="navbar-btn">
-                        <button type="button" class="btn-toggle-fullwidth"><i class="ti-arrow-circle-left"></i></button>
-                    </div>
-                    <div id="navbar-menu">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src='/ImageHandler.ashx?user_id_pk=65' alt="" />
-                                    <span>
-                                        <span id="lblUsername">admin</span></span>
-                                </a>
-                                <ul class="dropdown-menu logged-user-menu">
-                                    <li>
-                                        <a id="aProfile" href="#"><i class='ti-user'></i><span>Profile</span></a>
-                                    </li>
-                                    <li><a href='/logout.jsp'><i class="ti-power-off"></i><span>Logout</span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-	
-	</nav>
+    <div class="containerr">
+    	<div class="left">
+        <a href="#"  class="navbar-brand">
+        	User Management
+        </a>
+        <a  id="arrowIcon" onclick="toggleSideBar()"><i class="ti-arrow-circle-left " id="toggleId"></i> 
+        </a>
+        </div>
+        <div  class="profile">
+            <ul>
+                <li class="profile-item">
+                    <a href="#" class="admin">Admin</a>
+                </li>
+            </ul>
+         </div>
+    </div>
+    
+   
 </body>
 </html>

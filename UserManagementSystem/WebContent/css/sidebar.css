@@ -1,0 +1,57 @@
+.sidenavbar {
+	padding:1rem;
+    background-color: #2B333E;
+    height: 100vh;
+    width: 18%; 
+    color: #d6e1f1;      
+}
+
+.sidenavbar div{
+	margin-top:1.2rem; 
+}
+
+.sidenavbar a {
+	text-decoration: none;
+	color: #d6e1f1;
+}
+
+.sidenavbar i {
+	margin-right: 8px;
+	font-size: 17px;	
+}
+
+
+.ti-angle-left {
+	float: right;
+} 
+
+.sidebar .nav .label, .sidebar .nav .badge {
+    top: 0;
+    float: right;
+    display: block;
+    padding: 5px 7px;
+}
+.sidebar .nav span {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    top: -2px;
+}
+
+
+.label-success {
+    background-color: #41B314;
+}
+.label {
+	font-size:0.75rem;
+	border-radius: 0.2rem;
+	color: #fff;
+	top: 0;
+    float: right;
+    display: block;
+    padding: 4px 10px;
+    font-weight: normal;
+}
+
+.toggle {
+	text-align: center;
+}
