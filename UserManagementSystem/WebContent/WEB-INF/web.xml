@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>UserManagementSystem</display-name>
+   <welcome-file-list>
+  	<welcome-file>/jsp/login.jsp</welcome-file>
+  </welcome-file-list> 
+ 
+  
+<!-- 
+<servlet>
+
+<servlet-name>Log</servlet-name>
+
+<servlet-class>main.java.com.bridgelabz.usermanagement.controller.LoginServlet</servlet-class>
+
+</servlet>
+
+
+<servlet-mapping>
+
+<servlet-name>Log</servlet-name>
+
+<url-pattern>/loginServlet</url-pattern>
+
+</servlet-mapping> -->
+
+<servlet>
+		<servlet-name>forgot-password</servlet-name>
+		<jsp-file>/jsp/forgotpassword.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>forgot-password</servlet-name>
+		<url-pattern>/forgotpassword</url-pattern>
+	</servlet-mapping>
+</web-app>
