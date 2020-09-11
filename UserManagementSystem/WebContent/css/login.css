@@ -1,4 +1,139 @@
+ body {
+    background-color: #F5F6F9;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width:100%;
+}
 
-h1{
-	color:red;
+
+.cardd{
+	box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 70%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.cardd .left {
+    float: left;
+    width: 42%;
+    height: 100%;
+    padding:40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contain{
+	text-align: center;
+}
+
+.img-circle{
+	border-radius: 50%;
+	border: 1px solid #E5E5E5;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+ 
+ .control-label {
+    font-weight: normal;
+    font-family: "Roboto", sans-serif;
+    color: #5e6773;
+    
+}
+
+form{
+	margin-top: 20px;
+}
+
+.form-control{
+	box-shadow: none;
+    border-radius: 2px;
+    border-color: #e1e3ea;
+    background-color: #fcfcfc;
+    color: #5e6773;
+}
+
+.custom-control-label {
+    color: #a0aeba;
+    font-weight: normal;
+}
+
+.btn-primary {
+    background-color: #00AAFF;
+    border-color: #00a0f0;
+}
+
+.custom-control{
+	margin-bottom: 15px;
+}
+
+.cardd .helper-text {
+    font-size: 13px;
+    color: #a0aeba;
+}
+
+a {
+    color: #00aaff;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+
+
+.cardd .right {
+    float: right;
+    width: 58%;
+    height: 100%;
+    position: relative;
+    background-image: url("../img/login-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.cardd .right .overlay {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(99, 156, 185, 0.92);
+}
+
+.content-text{
+	position: relative;
+    padding: 0 30px;
+    color: #fff;
+} 
+
+ 
+.cardd .right .heading {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.cardd .right p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+} 
+
+@media (max-width: 768px) {
+  .cardd .right {
+    display: none;
+  }
+
+  .cardd .left {
+    float: none;
+    width: 100%;
+  }
 }

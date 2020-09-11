@@ -48,10 +48,10 @@ public class LoginServlet extends HttpServlet {
 				
 				HttpSession session=request.getSession();
 				session.setAttribute("username", user);
-				response.sendRedirect("jsp/dashboard.jsp");
+				response.sendRedirect("login");
 			}
 			else
-				response.sendRedirect("jsp/login.jsp");
+				response.sendRedirect("login");
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
