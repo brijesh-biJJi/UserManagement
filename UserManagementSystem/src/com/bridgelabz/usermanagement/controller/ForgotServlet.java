@@ -33,20 +33,19 @@ public class ForgotServlet extends HttpServlet {
 			System.out.println("in forgot------------");
 			String email = request.getParameter("email");
 			UserDao userDao=new UserDao();
-			String notification=userDao.passwordRecovery(email);		
-			if(notification=="success") {
+			boolean rs=userDao.passwordRecovery(email);	
+			String notification;
+			if(rs) {
 				notification="The Password has been sent to your E-mail Address";
 
-			rd = request.getRequestDispatcher("jsp/login.jsp");
 			request.setAttribute("notify", notification);
-			rd.forward(request, response);
+			response.sendRedirect("jsp/login.jsp");
 			}
 			else
 			{
 				notification="Specified email doest not exists in our record";
-				rd = request.getRequestDispatcher("jsp/forgotpassword.jsp");
 				request.setAttribute("notify", notification);
-				rd.forward(request, response);
+				response.sendRedirect("jsp/forgotpassword.jsp");
 			}
 	}
 

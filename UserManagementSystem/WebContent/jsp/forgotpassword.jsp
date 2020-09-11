@@ -26,7 +26,7 @@
                             <div class="form-auth-small">
                             <form action="ForgotServlet" method="post">
                                 <div class="form-group">
-                                    <input name="txtEmail" type="text" id="txtEmail" class="form-control" placeholder="Email" data-bv-notempty="true" data-bv-notempty-message="The email is required." data-bv-emailaddress="true" data-bv-emailaddress-message="Invalid email address.">
+                                    <input name="email" type="text" id="email" class="form-control" placeholder="Email" data-bv-notempty="true" data-bv-notempty-message="The email is required." data-bv-emailaddress="true" data-bv-emailaddress-message="Invalid email address.">
                                 </div>
                                 <input type="submit" name="btnRecoverPassword" value="RECOVER PASSWORD" id="btnRecoverPassword" class="btn btn-primary btn-lg btn-block">
                                 </form>

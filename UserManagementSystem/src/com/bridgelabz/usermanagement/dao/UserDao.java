@@ -171,9 +171,8 @@ public class UserDao {
 	        return list;  
 	    }  
 	 
-	 public String passwordRecovery(String email) {
+	 public boolean passwordRecovery(String email) {
 		 
-		 	String notification = null;
 			Connection con=getConnection();
 			userModel.setEmail(email);
 			String qry="select * from user where email=?";
@@ -200,19 +199,16 @@ public class UserDao {
 					//rabbitMqSender.send(mailObj);
 					MailServiceProvider.sendEmail(mailObj.getEmail(), mailObj.getSubject(), mailObj.getMessage());
 					
-					notification="success";
-					return notification;
+					
+					return true;
 
-				}
-				else {
-					notification="fail";
 				}
 						
 			} 
 			catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
-			return notification;
+			return false;
 	 }
 	
 
