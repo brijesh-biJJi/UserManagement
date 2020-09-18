@@ -35,6 +35,8 @@ public class NewUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String email       =request.getParameter("email"); 
 		 String first_name  =request.getParameter("f_name"); 
+		 System.out.println("webpage1 add --------"+Boolean.parseBoolean(request.getParameter("wp1-add")));
+		 System.out.println("webpage1 null check --------"+request.getParameter("wp1-add"));
 		 System.out.println("fname --------"+request.getParameter("f_name"));
 		 String middle_name =request.getParameter("m_name");
 		 String last_name   =request.getParameter("l_name");   

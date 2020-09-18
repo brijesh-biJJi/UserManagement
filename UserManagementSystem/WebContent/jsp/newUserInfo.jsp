@@ -44,7 +44,7 @@
 	                    <span> / &nbsp; New User </span>
                 	</div>
         		</div>
-        		<form id="user-form" class="user-form" action="newuser" method="post" enctype="multipart/form-data" onsubmit="return validatePassword(this)">
+        		<form id="user-form" class="user-form" action="test" method="post" onsubmit="return validatePassword(this)">
         		<div class="container-fluid">
             		<div class="row">
                			<div class="col-md-8">
@@ -589,9 +589,9 @@ function resetFunction() {
 }
 
 
-function validatePassword(form) {
-	var pass = form.password.value;
-	var cpass =form.confirmPassword.value;
+function validatePassword(event) {
+	var pass = event.password.value;
+	var cpass =event.confirmPassword.value;
 	if (pass != cpass) {
 		document.getElementById('error-message').innerHTML = "Password did not match";
 		return false;
