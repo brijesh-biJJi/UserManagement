@@ -33,7 +33,7 @@
 				    </button>
 				    <div class="sub-menu">
 				        <a href="newUser">New User</a>
-				        <a href="#">Users List</a>
+				        <a href="userdetails">Users List</a>
 				    </div>
 					
 					<div>

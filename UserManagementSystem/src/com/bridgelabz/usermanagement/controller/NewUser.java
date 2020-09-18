@@ -33,13 +33,14 @@ public class NewUser extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String email       =request.getParameter("email");         
-		 String first_name  =request.getParameter("f_name");     
+		 String email       =request.getParameter("email"); 
+		 String first_name  =request.getParameter("f_name"); 
+		 System.out.println("fname --------"+request.getParameter("f_name"));
 		 String middle_name =request.getParameter("m_name");
 		 String last_name   =request.getParameter("l_name");   
 		 String dob         =request.getParameter("dob");
 		 String gender      =request.getParameter("gender");
-	     int phone 			=Integer.parseInt(request.getParameter("phone"));
+	     int phone 			=Integer.parseInt(request.getParameter("phon"));
 	     String address 	=request.getParameter("address");     
 	     String username 	=request.getParameter("username");		
 	     String password 	=request.getParameter("password");   
