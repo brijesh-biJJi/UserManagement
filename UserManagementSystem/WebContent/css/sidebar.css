@@ -1,21 +1,71 @@
-.sidenavbar {
-	padding:1rem;
+
+html, body {
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	color: #5e6773;
+	margin: 0px;
+	padding: 0px;
+	background-color: #F5F6F9;
+	overflow: hidden;	
+}
+
+a {
+	text-decoration: none;
+}
+
+.sidebar {
+	color: #d6e1f1;
     background-color: #2B333E;
     height: 100vh;
-    width: 18%; 
-    color: #d6e1f1;      
+    width: 20%;   
+    padding: 10px; 
 }
 
-.sidenavbar div{
-	margin-top:1.2rem; 
+
+
+.sidebar a {
+    color: #d6e1f1;
+    padding: 24px 24px;
+    font-family: sans-serif;
+    padding-top: 10px;
+    display: block;
+    box-sizing: border-box;
 }
 
-.sidenavbar a {
+.sidebar a, .sidebar .menu-btn {
+    padding: 15px 15px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #d6e1f1;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+	margin-bottom: 5px;
+}
+.sidebar a:hover,.sidebar .menu-btn:hover {
+       color: #d6e1f1;
+}
+
+.sub-menu {
+    margin-left: 20px;
+    font-size: 10px;
+    font-weight: lighter;
+    display: none;
+    padding: 5px 2px;
+
+}
+
+
+.sidebar a {
 	text-decoration: none;
 	color: #d6e1f1;
 }
 
-.sidenavbar i {
+.sidebar i {
 	margin-right: 8px;
 	font-size: 17px;	
 }
@@ -25,33 +75,26 @@
 	float: right;
 } 
 
-.sidebar .nav .label, .sidebar .nav .badge {
-    top: 0;
-    float: right;
-    display: block;
-    padding: 5px 7px;
-}
-.sidebar .nav span {
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    top: -2px;
-}
-
-
-.label-success {
-    background-color: #41B314;
-}
 .label {
-	font-size:0.75rem;
-	border-radius: 0.2rem;
+	font-size:12px;
+	border-radius: .25em;
 	color: #fff;
+	
 	top: 0;
     float: right;
     display: block;
-    padding: 4px 10px;
-    font-weight: normal;
+    padding: 3px 7px;
+}
+
+.label-success {
+	background-color: #41B314;
 }
 
 .toggle {
 	text-align: center;
+}
+
+.icon-submenu {
+    font-size: 10px;
+    color: #a0aeba;
 }

@@ -1,0 +1,162 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background: #F5F6F9;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	font-family: "Roboto", sans-serif;
+	color: #5e6773;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+#wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+.body-content{
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.main-content {
+	width: 100%;
+    height: 100%;
+    background: #F5F6F9;
+    overflow: auto;
+    padding: 0 10px 28px 10px;
+    margin: 0;
+    background-color: #F5F6F9;
+}
+
+.content-heading {
+    margin: 0 -10px 30px -10px;
+    padding: 20px 25px;
+    border-bottom: 1px solid #e3e3e3;
+    background-color: #fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.content-heading .heading-left {
+    float: left;
+    font-size: 18px;
+    color: #878787;
+}
+
+.content-heading .heading-right {
+    float: right;
+    margin-bottom: 0;
+    padding: 12px 0;
+}
+
+
+.content-heading, .heading-right a{
+	color: #00aaff;
+    text-decoration:none;
+}
+
+.content-heading, .heading-right a i {
+    font-size: 15px;
+    margin-right: 3px;
+    color: #a0aeba;
+    color: #878787;
+}
+
+.panel {
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 30px;
+    border: 1px solid #d1d6e6;
+    background: #fff;
+}
+
+.panel.panel-headline .panel-heading {
+    border-bottom: none;
+    background-color: transparent;
+}
+
+.panel .panel-heading {
+    padding: 12px 20px;
+    position: relative;
+    line-height: 1;
+}
+
+.panel.panel-headline .panel-heading .panel-title {
+    font-size: 18px;
+}
+.panel .panel-heading .panel-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    font-weight: 500;
+    color: #717d84;
+}
+
+.panel .panel-heading .panel-subtitle {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 13px;
+    color: #a0aeba;
+}
+
+.panel .panel-body {
+    padding: 30px 20px;
+    position: relative;
+}
+
+.control-label {
+    color: #a0aeba;
+    font-size:18px;
+    font-weight: normal;
+}
+
+.form-control{
+	box-shadow: none;
+    border-radius: 5px;
+    border-color:red;
+    background-color: #fcfcfc;
+    color: #5e6773;
+}
+
+.input-group.date .input-group-addon {
+    cursor: pointer;
+}
+
+.help-block {
+    color: #a0aeba;
+    font-size: 13px;
+}
+
+.hideShowPassword-toggle {
+    margin-right: 5px;
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 19px;
+    background: #f1f2f5;
+    color: #b6bbcb;
+    outline: none;
+}
+
+.table > thead > tr {
+    font-size: 15px;
+    background-color: #fff;
+    color: #a1a7af;
+}
+
+th {
+    font-weight: normal;
+}
+
+

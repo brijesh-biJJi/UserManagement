@@ -182,7 +182,6 @@ public class UserDao {
 				pstmt.setString(1, userModel.getEmail());
 				
 				rs=pstmt.executeQuery();
-				System.out.println("in pr-------");
 				if(rs.next()) {
 					
 					String mailResponse= "Welcome "+rs.getString("first_name")+" "+rs.getString("last_name")
@@ -209,6 +208,20 @@ public class UserDao {
 				System.out.println(e.getMessage());
 			}
 			return false;
+	 }
+	 
+	 public UserModel getUserByEmail(String email) {
+			String qry="select * from user where email=?";
+			
+			try{  
+	            Connection con=getConnection();  
+	            PreparedStatement ps=con.prepareStatement(qry);  
+	            ps.setString(1,email);   
+	            ResultSet rs=ps.executeQuery();    
+	        }catch(Exception e)
+			{e.printStackTrace();}  
+		return userModel;
+		 
 	 }
 	
 

@@ -17,9 +17,8 @@ public class UserModel {
     private String password;      
     private String cpassword;		
     private LocalDateTime creator_at;
-	public UserModel() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+    public UserModel() {
 	}
 	
 	

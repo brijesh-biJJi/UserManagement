@@ -30,7 +30,6 @@ public class ForgotServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			RequestDispatcher rd;
-			System.out.println("in forgot------------");
 			String email = request.getParameter("email");
 			UserDao userDao=new UserDao();
 			boolean rs=userDao.passwordRecovery(email);	

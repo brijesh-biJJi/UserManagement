@@ -6,23 +6,6 @@
   </welcome-file-list> 
  
   
-<!-- 
-<servlet>
-
-<servlet-name>Log</servlet-name>
-
-<servlet-class>main.java.com.bridgelabz.usermanagement.controller.LoginServlet</servlet-class>
-
-</servlet>
-
-
-<servlet-mapping>
-
-<servlet-name>Log</servlet-name>
-
-<url-pattern>/loginServlet</url-pattern>
-
-</servlet-mapping> -->
 
 <servlet>
 		<servlet-name>forgotpassword</servlet-name>
@@ -50,4 +33,13 @@
 		<servlet-name>dashboard</servlet-name>
 		<url-pattern>/dashboard</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+        <servlet-name>newuser</servlet-name>
+        <jsp-file>/jsp/newUserInfo.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newuser</servlet-name>
+        <url-pattern>/newUser</url-pattern>
+    </servlet-mapping>
 </web-app>
