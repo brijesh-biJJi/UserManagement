@@ -37,11 +37,17 @@ public class NewUser extends HttpServlet {
 		 String first_name  =request.getParameter("f_name");     
 		 String middle_name =request.getParameter("m_name");
 		 String last_name   =request.getParameter("l_name");   
-//		 Date dob           =request.getParameter("dob");
+		 String dob         =request.getParameter("dob");
+		 String gender      =request.getParameter("gender");
 	     int phone 			=Integer.parseInt(request.getParameter("phone"));
 	     String address 	=request.getParameter("address");     
 	     String username 	=request.getParameter("username");		
-	     String password 	=request.getParameter("pass");   
+	     String password 	=request.getParameter("password");   
+	     String country 	=request.getParameter("country");
+	     String user_role 	=request.getParameter("role");
+	     String status 	=request.getParameter("status");   
+	     LocalDateTime today= LocalDateTime.now();
+	     String creator_at=today.toString();
 	     
 	     UserModel user=new UserModel();
 	     
@@ -49,51 +55,61 @@ public class NewUser extends HttpServlet {
 	     user.setFirst_name(first_name);
 	     user.setLast_name(last_name);
 	     user.setMiddle_name(middle_name);
+	     user.setDob(dob);
+	     user.setGender(gender);
 	     user.setPhone(phone);
 	     user.setAddress(address);
 	     user.setUsername(username);
 	     user.setPassword(password);
-	     user.setCreator_at(LocalDateTime.now());
-	     
-	     UserPermissions permissions=new UserPermissions();
-	     permissions.setDashAdd(Boolean.parseBoolean(request.getParameter("dash-add")));
-	     permissions.setDashDelete(Boolean.parseBoolean(request.getParameter("dash-delete")));
-	     permissions.setDashModify(Boolean.parseBoolean(request.getParameter("dash-modify")));
-	     permissions.setDashRead(Boolean.parseBoolean(request.getParameter("dash-read")));
-	     
-	     permissions.setSettingsAdd(Boolean.parseBoolean(request.getParameter("settings-add")));
-	     permissions.setSettingsDelete(Boolean.parseBoolean(request.getParameter("settings-delete")));
-	     permissions.setSettingsModify(Boolean.parseBoolean(request.getParameter("settings-modify")));
-	     permissions.setSettingsModify(Boolean.parseBoolean(request.getParameter("settings-read")));
-
-	     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-add")));
-	     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-delete")));
-	     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-modify")));
-	     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-read")));
-	     
-	     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-add")));
-	     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-delete")));
-	     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-modify")));
-	     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-read")));
-	     
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-add")));
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-delete")));
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-modify")));
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-read")));
-	     
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-add")));
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-delete")));
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-modify")));
-	     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-read")));
-	     
-	     
+	     user.setCountry(country);
+	     user.setUser_role(user_role);
+	     user.setStatus(status);
+	     user.setCreator_at(creator_at);
 	     
 	     UserServiceImpl userService=new UserServiceImpl();
-	     UserModel userModel=userService.resgister(user);
+	     int userResult=userService.register(user);
 	     
-	     if(userModel != null) {
-	    	 userService.addPermission(permissions);
+	     if(userResult > 0) {
+	    	 UserPermissions permissions=new UserPermissions();
+		     permissions.setDashAdd(Boolean.parseBoolean(request.getParameter("dash-add")));
+		     permissions.setDashDelete(Boolean.parseBoolean(request.getParameter("dash-delete")));
+		     permissions.setDashModify(Boolean.parseBoolean(request.getParameter("dash-modify")));
+		     permissions.setDashRead(Boolean.parseBoolean(request.getParameter("dash-read")));
+		     
+		     permissions.setSettingsAdd(Boolean.parseBoolean(request.getParameter("settings-add")));
+		     permissions.setSettingsDelete(Boolean.parseBoolean(request.getParameter("settings-delete")));
+		     permissions.setSettingsModify(Boolean.parseBoolean(request.getParameter("settings-modify")));
+		     permissions.setSettingsModify(Boolean.parseBoolean(request.getParameter("settings-read")));
+
+		     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-add")));
+		     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-delete")));
+		     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-modify")));
+		     permissions.setUsersInfoAdd(Boolean.parseBoolean(request.getParameter("userinfo-read")));
+		     
+		     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-add")));
+		     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-delete")));
+		     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-modify")));
+		     permissions.setWebPage1Add(Boolean.parseBoolean(request.getParameter("wp1-read")));
+		     
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-add")));
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-delete")));
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-modify")));
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp2-read")));
+		     
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-add")));
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-delete")));
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-modify")));
+		     permissions.setWebPage2Add(Boolean.parseBoolean(request.getParameter("wp3-read")));
+		     
+	    	 int permissionResult=userService.setPermission(permissions,user.getEmail());
+	    	 
+	    	 if (permissionResult >0 ) {
+					request.setAttribute("registrationMessage", "User Registered Successfully.....");
+				}
 	     }
+	     request.getRequestDispatcher("newUser").forward(request, response);
+
 	}
+	
 
 }

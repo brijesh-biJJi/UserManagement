@@ -15,6 +15,7 @@ import java.util.Properties;
 import com.bridgelabz.usermanagement.model.ConnectionModel;
 import com.bridgelabz.usermanagement.model.MailObject;
 import com.bridgelabz.usermanagement.model.UserModel;
+import com.bridgelabz.usermanagement.model.UserPermissions;
 import com.bridgelabz.usermanagement.utility.MailServiceProvider;
 
 public class UserDao {
@@ -78,27 +79,50 @@ public class UserDao {
 
 	}
 	
-	public int addUser(UserModel u) {
-		
-		String addQuery="insert into user(email,first_name,last_name,phone,address,verified,username,password,cpassword,dob) VALUES(?,?,?,?,?,?,?,?,?,?)";
+	public int registerUser(UserModel u) {
+		PreparedStatement ps = null;
+		Connection con = null;
+		String addQuery="insert into user(email,first_name,middle_name,last_name,phone,address,username,password,creator_at,dob,country,userrole,status,gender) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		  int status=0;  
 	        try{  
-	            Connection con=getConnection();  
-	            PreparedStatement ps=con.prepareStatement(addQuery);
+	             con=getConnection();  
+	            ps=con.prepareStatement(addQuery);
 	            ps.setString(1,u.getEmail());
 	            ps.setString(2, u.getFirst_name());
-	            ps.setString(3, u.getLast_name());
-	            ps.setInt(4,u.getPhone());
-	            ps.setString(5,u.getAddress());
-	            ps.setBoolean(6, u.isVerified());
+	            ps.setString(3, u.getMiddle_name());
+	            ps.setString(4, u.getLast_name());
+	            ps.setInt(5,u.getPhone());
+	            ps.setString(6,u.getAddress());
 	            ps.setString(7,u.getUsername());
 	            ps.setString(8,u.getPassword());
-	            ps.setString(9,u.getCpassword());
-	            ps.setDate(10, u.getDob());
+	            ps.setString(9,u.getCreator_at());
+	            ps.setString(10, u.getDob());
+	            ps.setString(11, u.getCountry());
+	            ps.setString(12, u.getUser_role());
+	            ps.setString(13, u.getStatus());
+	            ps.setString(14, u.getGender());
 	            status=ps.executeUpdate();  
-	              
-	            con.close();  
+	            return status;  
 	        }catch(Exception ex){ex.printStackTrace();}  
+	        finally {
+				if(ps!=null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				}
+				
+				if(con!=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 	          
 	        return status;  
 	}
@@ -115,12 +139,10 @@ public class UserDao {
 	            ps.setString(3, u.getLast_name());
 	            ps.setInt(4,u.getPhone());
 	            ps.setString(5,u.getAddress());
-	            ps.setBoolean(6, u.isVerified());
 	            ps.setString(7,u.getUsername());
 	            ps.setString(8,u.getPassword());
 	            ps.setString(9,u.getCpassword());
-	            ps.setDate(10, u.getDob());
-	            ps.setString(11,u.getUser_id());
+//	            ps.setString(11,u.getUser_id());
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
@@ -152,17 +174,15 @@ public class UserDao {
 	            ResultSet rs=ps.executeQuery();  
 	            while(rs.next()){  
 	                UserModel u = new UserModel();  
-	                u.setUser_id(rs.getString(1)); 
+//	                u.setUser_id(rs.getString(1)); 
 	                u.setEmail(rs.getString(2));
 	                u.setFirst_name(rs.getString(3));  
 	                u.setLast_name(rs.getString(4));  
 	                u.setPhone(rs.getInt(5));
 	                u.setAddress(rs.getString(6));
-	                u.setVerified(rs.getBoolean(7));
 	                u.setUsername(rs.getString(8));
 	                u.setPassword(rs.getString(9));
 	                u.setCpassword(rs.getString(10));
-	                u.setDob(rs.getDate(11));
 	                list.add(u);  
 	            }  
 	            con.close();  
@@ -210,19 +230,43 @@ public class UserDao {
 			return false;
 	 }
 	 
-	 public UserModel getUserByEmail(String email) {
-			String qry="select * from user where email=?";
+	 public int getUserIdByEmail(String email) {
+			String qry="select user_id from user where email=?";
 			
 			try{  
 	            Connection con=getConnection();  
 	            PreparedStatement ps=con.prepareStatement(qry);  
 	            ps.setString(1,email);   
-	            ResultSet rs=ps.executeQuery();    
+	            ResultSet rs=ps.executeQuery(); 
+	            if(rs.next())
+	            	return rs.getInt(1);
 	        }catch(Exception e)
-			{e.printStackTrace();}  
-		return userModel;
-		 
+			{e.printStackTrace();}
+			return 0;  
 	 }
+
+
+
+	public int setPermission(int userId, boolean add_p, boolean delete_p, boolean modify_p, boolean read_p,
+			int webpage_id) 
+	{
+		String qry= "insert into user_permissions (user_id,add_p,delete_p,modify_p,read_p,webpage_id) VALUES (?,?,?,?,?,?)";
+		Connection con=null;
+		PreparedStatement ps=null;
+		try {
+			ps = con.prepareStatement(qry);
+			ps.setInt(1, userId);
+			ps.setBoolean(2, add_p);
+			ps.setBoolean(3, delete_p);
+			ps.setBoolean(4, modify_p);
+			ps.setBoolean(5, read_p);
+			ps.setInt(6, webpage_id);
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 
 }

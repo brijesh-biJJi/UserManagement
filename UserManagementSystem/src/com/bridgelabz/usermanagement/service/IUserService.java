@@ -4,9 +4,8 @@ import com.bridgelabz.usermanagement.model.UserModel;
 import com.bridgelabz.usermanagement.model.UserPermissions;
 
 public interface IUserService {
-	public UserModel resgister(UserModel userModel);
+	public int register(UserModel userModel);
 
-	void addPermission(UserPermissions permissions);
-	
-	
+	int setPermission(UserPermissions permissions, String username);
+
 }
