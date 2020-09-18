@@ -40,7 +40,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>newuser</servlet-name>
-        <url-pattern>/newUser</url-pattern>
+        <url-pattern>/newuser</url-pattern>
     </servlet-mapping>
     
     <servlet>
