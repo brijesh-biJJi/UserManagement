@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/toolbar.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newusers.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/userDetails.css">
 </head>
 <body>
 <%
@@ -20,7 +20,7 @@
 	response.setDateHeader ("Expires", 0);
 	if(session.getAttribute("username")==null)
 	{
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login");
 	}
 %>
 	<div id="wrapper">
@@ -49,17 +49,49 @@
                			<div class="col-md-12">
                     		<div class="panel panel-headline">
                         		<div class="panel-heading">
-                            		<h3 class="panel-title"></h3>
-                            		<p class="panel-subtitle"></p>
-                            		<h3 class="panel-title">
-                        			<span id= class="panel-title"></span></h3>
-                        		</div>
+				                    <h3 class="panel-title">
+				                        <span class="panel-title"></span>
+				                    </h3>
+				                    <div class="right">
+				                        <a href="newuserinfo" class="btn btn-info btn-xs">
+				                            <i class="ti-user"></i>
+				                            <span>New User</span>
+				                        </a>
+				                    </div>
+				                </div>
                         		<div class="panel-body">
-                            		
-                            	
-                            		
-		                            
-                                		
+                            		<div class="row" style="display: flex; justify-content: space-between; flex-wrap: nowrap;">
+				                        <div class="col-md-2 col-xs-4">
+				                            <select id="pageSize" class="form-control btn-panel-refresh" onchange="changePagesize(this);">
+				                                <option>10</option>
+				                                <option>20</option>
+				                                <option>50</option>
+				                                <option>100</option>
+				                            </select>
+				                        </div>
+				                        <div class="col-md-3 col-xs-8 pull-right">
+				                            <input name="txtSearch" type="text" id="txtSearch" class="form-control" placeholder="Search...">
+				                        </div>
+                    				</div>	
+                    				
+                    				<div class="row">
+                    					<div class="col-md-12 table-responsive">
+                    						<table class="table table-bordered table-hover" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+                    							<thead>
+                    								<tr>
+                    									<th scope="col">&nbsp;</th>
+                    									<th scope="col">Name</th>
+                    									<th scope="col">Email</th>
+                    									<th scope="col">DOB</th>
+                    									<th scope="col">Status</th>
+                    									<th scope="col">Role</th>
+                    									<th scope="col">Account</th>
+                    									<th scope="col">Action</th>
+                    								</tr>
+                    							</thead>
+                    						</table>
+                    					</div>
+                    				</div>
                             	</div>
                         		
                     		</div>

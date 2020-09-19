@@ -35,12 +35,12 @@
 	</servlet-mapping>
 	
 	<servlet>
-        <servlet-name>newuser</servlet-name>
+        <servlet-name>newuserinfo</servlet-name>
         <jsp-file>/jsp/newUserInfo.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>newuser</servlet-name>
-        <url-pattern>/newuser</url-pattern>
+        <servlet-name>newuserinfo</servlet-name>
+        <url-pattern>/newuserinfo</url-pattern>
     </servlet-mapping>
     
     <servlet>

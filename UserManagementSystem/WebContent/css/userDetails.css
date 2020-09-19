@@ -1,0 +1,143 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background: #F5F6F9;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	font-family: "Roboto", sans-serif;
+	color: #5e6773;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+#wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+.body-content{
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.main-content {
+	width: 100%;
+    height: 100%;
+    background: #F5F6F9;
+    overflow: auto;
+    padding: 0 10px 28px 10px;
+    margin: 0;
+    background-color: #F5F6F9;
+}
+
+.content-heading {
+    margin: 0 -10px 30px -10px;
+    padding: 20px 25px;
+    border-bottom: 1px solid #e3e3e3;
+    background-color: #fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.content-heading .heading-left {
+    float: left;
+    font-size: 18px;
+    color: #878787;
+}
+
+.content-heading .heading-right {
+    float: right;
+    margin-bottom: 0;
+    padding: 12px 0;
+}
+
+
+.content-heading, .heading-right a{
+	color: #00aaff;
+    text-decoration:none;
+}
+
+.content-heading, .heading-right a i {
+    font-size: 15px;
+    margin-right: 3px;
+    color: #a0aeba;
+    color: #878787;
+}
+
+
+.panel {
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 30px;
+    border: 1px solid #d1d6e6;
+    background: #fff;
+}
+
+.panel .panel-heading {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    position: relative;
+    line-height: 1;
+    border-bottom: 1px solid #eaeff2;
+    background-color: #f8f9fa;
+}
+.panel .panel-heading, .panel .panel-body, .panel .panel-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.panel .panel-heading .right {
+    float: right;
+    height:25px;
+}
+
+.panel .panel-heading .panel-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #717d84;
+}
+
+.panel .panel-heading .right .btn {
+    padding: 4px 10px;
+    position: relative;
+    top: -0.4em;
+    font-size: 11px;
+}
+.btn-info {
+    background-color: rgba(91,192,222, 0.3);
+    border-color: #4EBBDB;
+}
+
+.panel .panel-body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+}
+.panel .panel-heading, .panel .panel-body, .panel .panel-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form-control {
+    box-shadow: none;
+    border-radius: 2px;
+    border-color: #e1e3ea;
+    background-color: #fcfcfc;
+    color: #5e6773;
+}
+
+.panel .panel-body .right {
+    float: right;
+}

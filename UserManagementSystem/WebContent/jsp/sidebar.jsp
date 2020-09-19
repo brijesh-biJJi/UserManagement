@@ -32,7 +32,7 @@
 				        <i class="icon-submenu ti-angle-left"></i>
 				    </button>
 				    <div class="sub-menu">
-				        <a href="newUser">New User</a>
+				        <a href="newuserinfo">New User</a>
 				        <a href="userdetails">Users List</a>
 				    </div>
 					

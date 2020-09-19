@@ -82,7 +82,7 @@ public class UserDao {
 	public int registerUser(UserModel u) {
 		PreparedStatement ps = null;
 		Connection con = null;
-		String addQuery="insert into user(email,first_name,middle_name,last_name,phone,address,username,password,creator_at,dob,country,userrole,status,gender) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String addQuery="insert into user(email,first_name,middle_name,last_name,phone,address,username,password,creator_at,dob,country,userrole,status,gender) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		  int status=0;  
 	        try{  
 	             con=getConnection();  
@@ -91,7 +91,7 @@ public class UserDao {
 	            ps.setString(2, u.getFirst_name());
 	            ps.setString(3, u.getMiddle_name());
 	            ps.setString(4, u.getLast_name());
-	            ps.setInt(5,u.getPhone());
+	            ps.setLong(5,u.getPhone());
 	            ps.setString(6,u.getAddress());
 	            ps.setString(7,u.getUsername());
 	            ps.setString(8,u.getPassword());
@@ -137,7 +137,7 @@ public class UserDao {
 	            ps.setString(1,u.getEmail());
 	            ps.setString(2, u.getFirst_name());
 	            ps.setString(3, u.getLast_name());
-	            ps.setInt(4,u.getPhone());
+	            ps.setLong(4,u.getPhone());
 	            ps.setString(5,u.getAddress());
 	            ps.setString(7,u.getUsername());
 	            ps.setString(8,u.getPassword());
@@ -165,31 +165,7 @@ public class UserDao {
 	        return status;  
 	    }  
 	
-	 public List<UserModel> getAllUser(){  
-	        List<UserModel> list=new ArrayList<UserModel>();  
-	          
-	        try{  
-	            Connection con=getConnection();  
-	            PreparedStatement ps=con.prepareStatement("select * from user");  
-	            ResultSet rs=ps.executeQuery();  
-	            while(rs.next()){  
-	                UserModel u = new UserModel();  
-//	                u.setUser_id(rs.getString(1)); 
-	                u.setEmail(rs.getString(2));
-	                u.setFirst_name(rs.getString(3));  
-	                u.setLast_name(rs.getString(4));  
-	                u.setPhone(rs.getInt(5));
-	                u.setAddress(rs.getString(6));
-	                u.setUsername(rs.getString(8));
-	                u.setPassword(rs.getString(9));
-	                u.setCpassword(rs.getString(10));
-	                list.add(u);  
-	            }  
-	            con.close();  
-	        }catch(Exception e){e.printStackTrace();}  
-	          
-	        return list;  
-	    }  
+	
 	 
 	 public boolean passwordRecovery(String email) {
 		 
@@ -250,10 +226,11 @@ public class UserDao {
 	public int setPermission(int userId, boolean add_p, boolean delete_p, boolean modify_p, boolean read_p,
 			int webpage_id) 
 	{
-		String qry= "insert into user_permissions (user_id,add_p,delete_p,modify_p,read_p,webpage_id) VALUES (?,?,?,?,?,?)";
+		String qry= "insert into user_permissions(user_id,add_p,delete_p,modify_p,read_p,webpage_id) VALUES (?,?,?,?,?,?)";
 		Connection con=null;
 		PreparedStatement ps=null;
 		try {
+			con=getConnection();
 			ps = con.prepareStatement(qry);
 			ps.setInt(1, userId);
 			ps.setBoolean(2, add_p);
@@ -267,6 +244,57 @@ public class UserDao {
 		}
 		return 0;
 	}
+	
+	 public List<UserModel> getAllUser(){  
+		 Connection con=null;
+		 PreparedStatement ps =null;
+	        List<UserModel> list=new ArrayList<UserModel>();  
+	          
+	        try{  
+	            con=getConnection();  
+	            ps=con.prepareStatement("select * from user");  
+	            ResultSet rs=ps.executeQuery();  
+	            while(rs.next()){  
+	                UserModel u = new UserModel();  
+	                u.setUser_id(rs.getInt(1)); 
+	                u.setEmail(rs.getString(2));
+	                u.setFirst_name(rs.getString(3));  
+	                u.setLast_name(rs.getString(5));  
+	                u.setPhone(rs.getLong(6));
+	                u.setAddress(rs.getString(7));
+	                u.setUsername(rs.getString(8));
+	                u.setDob(rs.getString(11));
+	                u.setCountry(rs.getString(12));
+	                u.setUser_role(rs.getString(13));
+	                u.setStatus(rs.getString(14));
+	                u.setGender(rs.getString(16));
+	                list.add(u);  
+	            }  
+	            System.out.println("user List"+list);
+	            return list;  
+	        }catch(Exception e){e.printStackTrace();}  
+	        finally {
+				if(ps!=null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				}
+				
+				if(con!=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+	          
+	        return list;  
+	    }  
 	
 
 }

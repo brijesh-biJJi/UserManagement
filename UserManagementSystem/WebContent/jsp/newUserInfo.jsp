@@ -21,7 +21,7 @@
 	response.setDateHeader ("Expires", 0);
 	if(session.getAttribute("username")==null)
 	{
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login");
 	}
 %>
 	<div id="wrapper">
@@ -44,7 +44,7 @@
 	                    <span> / &nbsp; New User </span>
                 	</div>
         		</div>
-        		<form id="user-form" class="user-form" action="test" method="post" onsubmit="return validatePassword(this)">
+        		<form id="user-form" class="user-form" action="newuser" method="post" onsubmit="return validatePassword(this)">
         		<div class="container-fluid">
             		<div class="row">
                			<div class="col-md-8">
@@ -271,7 +271,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input  type="checkbox" id="dash-add" class="admin-permission add">
+				                                                                <input  type="checkbox" name="dash-add" id="dash-add" class="admin-permission add">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -279,7 +279,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input  type="checkbox" id="dash-delete" class="admin-permission delete">
+				                                                                <input  type="checkbox" name="dash-delete"  id="dash-delete" class="admin-permission delete">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -288,7 +288,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input type="checkbox" id="dash-modify" class="admin-permission modify">
+				                                                                <input type="checkbox" name="dash-modify" id="dash-modify" class="admin-permission modify">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -296,7 +296,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input  type="checkbox" id="dash-read" class="admin-permission read" >
+				                                                                <input  type="checkbox" name="dash-read" id="dash-read" class="admin-permission read" >
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -318,7 +318,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input  type="checkbox" id="settings-add" class="admin-permission add">
+				                                                                <input  type="checkbox" name="settings-add" id="settings-add" class="admin-permission add">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -326,7 +326,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input  type="checkbox" id="settings-delete" class="admin-permission delete">
+				                                                                <input  type="checkbox" name="settings-delete" id="settings-delete" class="admin-permission delete">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -334,7 +334,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input type="checkbox" id="settings-modify" class="admin-permission modify">
+				                                                                <input type="checkbox" name="settings-modify" id="settings-modify" class="admin-permission modify">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -342,7 +342,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input type="checkbox" id="settings-read" class="admin-permission read">
+				                                                                <input type="checkbox" name="settings-read" id="settings-read" class="admin-permission read">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -364,7 +364,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input  type="checkbox" id="userinfo-add" class="admin-permission add">
+				                                                                <input  type="checkbox" name="userinfo-add" id="userinfo-add" class="admin-permission add">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -373,7 +373,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input type="checkbox" id="userinfo-delete" class="admin-permission delete">
+				                                                                <input type="checkbox" name="userinfo-delete" id="userinfo-delete" class="admin-permission delete">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -382,7 +382,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input type="checkbox" id="userinfo-modify" class="admin-permission user-permission modify">
+				                                                                <input type="checkbox" name="userinfo-modify" id="userinfo-modify" class="admin-permission user-permission modify">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -390,7 +390,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input  type="checkbox" id="userinfo-read" class="admin-permission read">
+				                                                                <input  type="checkbox" name="userinfo-read" id="userinfo-read" class="admin-permission read">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -412,7 +412,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input  type="checkbox" id="wp1-add" class="admin-permission user-permission add">
+			                                                                <input  type="checkbox" name="wp1-add" id="wp1-add" class="admin-permission user-permission add">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -421,7 +421,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input type="checkbox"  id="wp1-delete" class="admin-permission delete">
+			                                                                <input type="checkbox" name="wp1-delete" id="wp1-delete" class="admin-permission delete">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -430,7 +430,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input  type="checkbox" id="wp1-modify" class="admin-permission user-permission modify">
+			                                                                <input  type="checkbox" name="wp1-modify" id="wp1-modify" class="admin-permission user-permission modify">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -438,7 +438,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input  type="checkbox" id="wp1-read" class="admin-permission user-permission read">
+			                                                                <input  type="checkbox" name="wp1-read" id="wp1-read" class="admin-permission user-permission read">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -459,7 +459,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input type="checkbox" id="wp2-add" class="admin-permission user-permission add">
+		                                                                <input type="checkbox" name="wp2-add" id="wp2-add" class="admin-permission user-permission add">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -468,7 +468,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input  type="checkbox" id="wp2-delete" class="admin-permission delete" >
+		                                                                <input  type="checkbox" name="wp2-delete" id="wp2-delete" class="admin-permission delete" >
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -477,7 +477,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input  type="checkbox" id="wp2-modify" class="admin-permission user-permission modify">
+		                                                                <input  type="checkbox" name="wp2-modify" id="wp2-modify" class="admin-permission user-permission modify">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -485,7 +485,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input  type="checkbox" id="wp2-read" class="admin-permission user-permission read">
+		                                                                <input  type="checkbox" name="wp2-read" id="wp2-read" class="admin-permission user-permission read">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -507,7 +507,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input type="checkbox" id="wp3-add" class="admin-permission user-permission add" >
+		                                                                <input type="checkbox" name="wp3-add" id="wp3-add" class="admin-permission user-permission add" >
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -516,7 +516,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input type="checkbox" id="wp3-delete" class="admin-permission delete">
+		                                                                <input type="checkbox" name="wp3-delete" id="wp3-delete" class="admin-permission delete">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -525,7 +525,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input type="checkbox" id="wp3-modify" class="admin-permission user-permission modify">
+		                                                                <input type="checkbox" name="wp3-modify" id="wp3-modify" class="admin-permission user-permission modify">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -533,7 +533,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input type="checkbox" id="wp3-read" class="admin-permission user-permission read">
+		                                                                <input type="checkbox" name="wp3-read" id="wp3-read" class="admin-permission user-permission read">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>

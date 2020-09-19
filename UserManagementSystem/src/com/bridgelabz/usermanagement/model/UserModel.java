@@ -11,15 +11,7 @@ public class UserModel {
 	private String last_name;   
 	private String dob;
 	private String gender;
-    public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	private int phone;
+	private long phone;
     private String address;	      
     private String username;		
     private String password;      
@@ -33,10 +25,8 @@ public class UserModel {
     public UserModel() {
 	}
 
-	
-
 	public UserModel(int user_id, String email, String first_name, String middle_name, String last_name, String dob,
-			String gender, int phone, String address, String username, String password, String cpassword,
+			String gender, long phone, String address, String username, String password, String cpassword,
 			String country, String user_role, String status, String image, String creator_at) {
 		super();
 		this.user_id = user_id;
@@ -98,7 +88,6 @@ public class UserModel {
 		this.last_name = last_name;
 	}
 
-
 	public String getDob() {
 		return dob;
 	}
@@ -107,19 +96,19 @@ public class UserModel {
 		this.dob = dob;
 	}
 
-	public String getCreator_at() {
-		return creator_at;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setCreator_at(String creator_at) {
-		this.creator_at = creator_at;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 
@@ -187,12 +176,14 @@ public class UserModel {
 		this.image = image;
 	}
 
+	public String getCreator_at() {
+		return creator_at;
+	}
+
+	public void setCreator_at(String creator_at) {
+		this.creator_at = creator_at;
+	}
 
 	
-    
 
-
-
-
-	
 }
