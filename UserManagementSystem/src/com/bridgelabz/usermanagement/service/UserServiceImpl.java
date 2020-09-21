@@ -26,6 +26,12 @@ public class UserServiceImpl implements IUserService {
 		userDao.setPermission(userId, permissions.isWebPage2Add(), permissions.isWebPage2Delete(), permissions.isWebPage2Modify(), permissions.isWebPage2Read(), 5);
 		return userDao.setPermission(userId, permissions.isWebPage3Add(), permissions.isWebPage3Delete(), permissions.isWebPage3Modify(), permissions.isWebPage3Read(), 6);
 	}
+
+
+	@Override
+	public int deleteUser(int userid) {
+		return userDao.deleteUser(userid);
+	}
 	
 	
 }

@@ -1,5 +1,9 @@
+<%@page import="org.apache.catalina.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.ArrayList" %>
+<%@ page import="com.bridgelabz.usermanagement.model.UserModel"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,13 +74,13 @@
 				                            </select>
 				                        </div>
 				                        <div class="col-md-3 col-xs-8 pull-right">
-				                            <input name="txtSearch" type="text" id="txtSearch" class="form-control" placeholder="Search...">
+				                            <input name="txtSearch" type="text" id="searchInput" onkeyup="searchFunction()" class="form-control" placeholder="Search...">
 				                        </div>
                     				</div>	
-                    				
+                    				<div style="margin: 30px 0"></div>
                     				<div class="row">
                     					<div class="col-md-12 table-responsive">
-                    						<table class="table table-bordered table-hover" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+                    						<table id="usersTable" class="table table-bordered table-hover" cellspacing="0" style="width: 100%; border-collapse: collapse;">
                     							<thead>
                     								<tr>
                     									<th scope="col">&nbsp;</th>
@@ -89,6 +93,53 @@
                     									<th scope="col">Action</th>
                     								</tr>
                     							</thead>
+                    							<tbody>	
+                    								<%List<UserModel> usersList= (List<UserModel>) session.getAttribute("usersList"); 
+                        								for (UserModel user: usersList) { 
+                        							%>
+                        							<tr>
+                        								<td align="center" valign="middle" style="width:4%;">
+                                            				<input type="hidden" >
+                                           	 				<img id="userImg" class="img-rounded" style="width: 38px; height: 38px; margin-top: -10px; margin-bottom: -12px" alt="" src="${pageContext.request.contextPath}/img/user.png">
+                                        				</td>
+                                        				<td><%=user.getFirst_name()+ " " + user.getLast_name()%></td>
+														<td><%=user.getEmail()%></td>
+														<td><%=user.getDob()%></td>
+														<td style="display: flex; justify-content: center;" >
+															<% 
+																if (user.getStatus().equals("active")) {
+															%> 
+																<label id="lblStatus" style="font-size: 13px; font-weight: normal; text-align: center;" class="label label-success label-transparent">Active</label>
+															<% 
+																} else { 
+															%> 
+																<label id="lblStatus" style="font-size: 13px; font-weight: normal; text-align: center;" class="label label-danger label-transparent">Inactive</label>
+															<% } %>
+														</td>
+														<td><%=user.getUser_role().toUpperCase()%></td>
+														<td style="text-align: center;"><label style="font-weight: normal; font-size: large; color: #88BA40;"
+																class="ti-unlock text-success">
+														</label></td>
+														<td align="center" style="width:8%;">
+				                                            <a id="editUser" style="cursor: pointer; " data-user-id="1" title="Edit User Details">
+				                                                <i class="ti-pencil-alt" style="font-size:medium ; color: #00aaff;"></i>
+				                                            </a>
+				                                            <a id="deleteUser" style="cursor: pointer;" data-user-id="1" title="Delete User Details" data-modelid="<%=user.getUser_id()%>">
+				                                                <i class="ti-trash text-danger" style="font-size: medium"></i>
+				                                            </a>
+				                                            
+				                   
+																 <div id="<%=user.getUser_id()%>" class="modal-fade">
+				  													<div class="dialog-box">
+				                                                            <h5 style="margin-bottom: 1rem">Are you sure?</h5>
+				                                                            <a id="deleteUserModal" href="DeleteUser?userid=<%=user.getUser_id()%>" class="btn btn-success" style="border-radius: 3px; padding: 6px 22px; background-color: #41B314;border-color: #3ca512;" data-user-id="1" data-dismiss="modal">Yes</a>
+				                                                            <input type="button" class="btn btn-danger close-modal" style="border-radius: 3px; padding: 6px 22px; background-color: #F9354C;border-color: #f9263f;" data-dismiss="modal" value="No">                                                            
+				  													</div>
+																</div>
+														</td>	
+                        							</tr>
+                        							<% } %>	
+                    							</tbody>
                     						</table>
                     					</div>
                     				</div>
@@ -120,6 +171,5 @@
 	</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 <script type="text/javascript" src ="${pageContext.request.contextPath}/js/main.js"></script>
-<script type="text/javascript" src ="${pageContext.request.contextPath}/js/permision.js"></script>	
 </body>
 </html>

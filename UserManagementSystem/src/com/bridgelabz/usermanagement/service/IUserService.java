@@ -8,4 +8,6 @@ public interface IUserService {
 
 	int setPermission(UserPermissions permissions, String username);
 
+	public int deleteUser(int userid);
+
 }

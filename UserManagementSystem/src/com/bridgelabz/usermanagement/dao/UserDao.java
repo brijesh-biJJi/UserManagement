@@ -151,21 +151,7 @@ public class UserDao {
 	        return status;  
 	}
 	
-	 public int deleteUser(String id){  
-	        int status=0;  
-	        try{  
-	            Connection con=getConnection();  
-	            PreparedStatement ps=con.prepareStatement("delete from user where id=?");  
-	            ps.setString(1,id);  
-	            status=ps.executeUpdate();  
-	              
-	            con.close();  
-	        }catch(Exception e){e.printStackTrace();}  
-	          
-	        return status;  
-	    }  
-	
-	
+
 	 
 	 public boolean passwordRecovery(String email) {
 		 
@@ -294,7 +280,48 @@ public class UserDao {
 			}
 	          
 	        return list;  
-	    }  
+	    }
+
+	public int deleteUser(int userid) {
+		Connection con=null;
+		PreparedStatement ps=null;
+		String deleteUserQry="delete from user where user_id=?";
+		String deleteUserPermissionQry="delete from user_permissions where user_id=?";
+		int status=0;  
+        try{  
+             con=getConnection();  
+             ps=con.prepareStatement(deleteUserPermissionQry);  
+             ps.setInt(1,userid); 
+             status=ps.executeUpdate();  
+             if(status > 0) {
+            	 ps=con.prepareStatement(deleteUserQry);  
+                 ps.setInt(1,userid);  
+                 status=ps.executeUpdate();  
+             }
+            return status;
+        }catch(Exception e){e.printStackTrace();}  
+        finally {
+			if(ps!=null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			}
+			
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+        return status;  
+	}  
+	
 	
 
 }

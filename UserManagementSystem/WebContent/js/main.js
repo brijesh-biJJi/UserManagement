@@ -23,3 +23,37 @@ for (var i = 0; i < sideMenuBtn.length; i++) {
         }
     });
 }
+
+$(function(){
+	$('#deleteUser').on('click', function(){
+		var modalId = $(this).attr('data-modelid');
+		$('#'+modalId).toggle();
+	})
+
+	$('.close-modal').on('click', function(){
+		$('.modal-fade').css('display','none');
+	})	
+})
+
+
+function searchFunction() {
+  var searchValue, filter, tableId, tableRow, tableData, i, txtValue;
+  
+  searchValue = document.getElementById("searchInput");
+  filter = searchValue.value.toUpperCase();
+  
+  tableId = document.getElementById("usersTable");
+  tableRow = tableId.getElementsByTagName("tr");
+  
+  for (i = 0; i < tableRow.length; i++) {
+	  tableData = tableRow[i].getElementsByTagName("td")[1];
+    if (tableData) {
+      txtValue = tableData.textContent || tableData.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    	  tableRow[i].style.display = "";
+      } else {
+    	  tableRow[i].style.display = "none";
+      }
+    }       
+  }
+}

@@ -141,3 +141,71 @@ a {
 .panel .panel-body .right {
     float: right;
 }
+
+.label-transparent.label-danger {
+    background-color: rgba(249, 53, 76, 0.1);
+    color: #F9354C;
+}
+
+.table > tbody > tr > td {
+    border-color: #e9eef2;
+}
+
+.label-transparent.label-success {
+    background-color: rgba(65, 179, 20, 0.1);
+    color: #41B314;
+}
+.img-rounded {
+    border-radius: 6px;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0;
+}
+
+.text-success {
+    color: #41B314;
+}
+
+.text-danger {
+    color: #F9354C;
+}
+
+a {
+    color: #00aaff;
+}
+
+.modal-fade {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 50px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+
+.dialog-box {
+width: 300px;	
+  background-color: #fff;
+  margin:auto;
+  padding: 20px;
+  background-clip:padding-box;
+  border: 1px solid #888;
+  border-radius: 6px;
+}
+
+
+.dialog-box {
+  color: grey;
+  font-size: 28px;
+}
+
+.btn:hover {
+	background-color: opacity: 0.5;
+}
