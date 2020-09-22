@@ -70,7 +70,7 @@ public class NewUser extends HttpServlet {
 	     UserServiceImpl userService=new UserServiceImpl();
 	     int userResult=userService.register(user);
 	     
-	     if(1 > 0) {
+	     if(userResult > 0) {
 	    	 UserPermissions permissions=new UserPermissions();
 		     permissions.setDashAdd((null != request.getParameter("dash-add")));
 		     permissions.setDashDelete((null != request.getParameter("dash-delete")));

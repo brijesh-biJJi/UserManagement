@@ -281,7 +281,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isDashAdd()) {%> checked<%}%> type="checkbox" name="dash-add" id="dash-add" class="admin-permission add">
+				                                                                <input <%if (permissions.isDashAdd()) {%> checked<%}%> value="true" type="checkbox" name="dash-add" id="dash-add" class="admin-permission add">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -289,7 +289,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isDashDelete()) {%> checked<%}%> type="checkbox" name="dash-delete"  id="dash-delete" class="admin-permission delete">
+				                                                                <input <%if (permissions.isDashDelete()) {%> checked<%}%> value="true" type="checkbox" name="dash-delete"  id="dash-delete" class="admin-permission delete">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -298,7 +298,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isDashModify()) {%> checked<%}%> type="checkbox" name="dash-modify" id="dash-modify" class="admin-permission modify">
+				                                                                <input <%if (permissions.isDashModify()) {%> checked<%}%> value="true" type="checkbox" name="dash-modify" id="dash-modify" class="admin-permission modify">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -306,7 +306,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isDashRead()) {%> checked<%}%> type="checkbox" name="dash-read" id="dash-read" class="admin-permission read" >
+				                                                                <input <%if (permissions.isDashRead()) {%> checked<%}%> value="true" type="checkbox" name="dash-read" id="dash-read" class="admin-permission read" >
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -328,7 +328,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isSettingsAdd()) {%> checked<%}%> type="checkbox" name="settings-add" id="settings-add" class="admin-permission add">
+				                                                                <input <%if (permissions.isSettingsAdd()) {%> checked<%}%> value="true"  type="checkbox" name="settings-add" id="settings-add" class="admin-permission add">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -336,7 +336,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isSettingsDelete()) {%> checked<%}%> type="checkbox" name="settings-delete" id="settings-delete" class="admin-permission delete">
+				                                                                <input <%if (permissions.isSettingsDelete()) {%> checked<%}%> value="true" type="checkbox" name="settings-delete" id="settings-delete" class="admin-permission delete">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -344,7 +344,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isSettingsModify()) {%> checked<%}%> type="checkbox" name="settings-modify" id="settings-modify" class="admin-permission modify">
+				                                                                <input <%if (permissions.isSettingsModify()) {%> checked<%}%> value="true" type="checkbox" name="settings-modify" id="settings-modify" class="admin-permission modify">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -352,7 +352,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isSettingsRead()) {%> checked<%}%> type="checkbox" name="settings-read" id="settings-read" class="admin-permission read">
+				                                                                <input <%if (permissions.isSettingsRead()) {%> checked<%}%> value="true" type="checkbox" name="settings-read" id="settings-read" class="admin-permission read">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -374,7 +374,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isUsersInfoAdd()) {%> checked<%}%> type="checkbox" name="userinfo-add" id="userinfo-add" class="admin-permission add">
+				                                                                <input <%if (permissions.isUsersInfoAdd()) {%> checked<%}%> value="true" type="checkbox" name="userinfo-add" id="userinfo-add" class="admin-permission add">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -383,7 +383,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isUsersInfoDelete()) {%> checked<%}%> type="checkbox" name="userinfo-delete" id="userinfo-delete" class="admin-permission delete">
+				                                                                <input <%if (permissions.isUsersInfoDelete()) {%> checked<%}%> value="true" type="checkbox" name="userinfo-delete" id="userinfo-delete" class="admin-permission delete">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -392,7 +392,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isUsersInfoModify()) {%> checked<%}%> type="checkbox" name="userinfo-modify" id="userinfo-modify" class="admin-permission user-permission modify">
+				                                                                <input <%if (permissions.isUsersInfoModify()) {%> checked<%}%> value="true" type="checkbox" name="userinfo-modify" id="userinfo-modify" class="admin-permission user-permission modify">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -400,7 +400,7 @@
 				                                                    <td style="width: 10%">
 				                                                        <div class="fancy-checkbox">
 				                                                            <label>
-				                                                                <input <%if (permissions.isUsersInfoRead()) {%> checked<%}%> type="checkbox" name="userinfo-read" id="userinfo-read" class="admin-permission read">
+				                                                                <input <%if (permissions.isUsersInfoRead()) {%> checked<%}%> value="true" type="checkbox" name="userinfo-read" id="userinfo-read" class="admin-permission read">
 				                                                                <span>&nbsp;</span>
 				                                                            </label>
 				                                                        </div>
@@ -422,7 +422,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input <%if (permissions.isWebPage1Add()) {%> checked<%}%> type="checkbox" name="wp1-add" id="wp1-add" class="admin-permission user-permission add">
+			                                                                <input <%if (permissions.isWebPage1Add()) {%> checked<%}%> value="true" type="checkbox" name="wp1-add" id="wp1-add" class="admin-permission user-permission add">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -431,7 +431,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input <%if (permissions.isWebPage1Delete()) {%> checked<%}%> type="checkbox" name="wp1-delete" id="wp1-delete" class="admin-permission delete">
+			                                                                <input <%if (permissions.isWebPage1Delete()) {%> checked<%}%> value="true" type="checkbox" name="wp1-delete" id="wp1-delete" class="admin-permission delete">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -440,7 +440,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input <%if (permissions.isWebPage1Modify()) {%> checked<%}%> type="checkbox" name="wp1-modify" id="wp1-modify" class="admin-permission user-permission modify">
+			                                                                <input <%if (permissions.isWebPage1Modify()) {%> checked<%}%> value="true" type="checkbox" name="wp1-modify" id="wp1-modify" class="admin-permission user-permission modify">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -448,7 +448,7 @@
 			                                                    <td style="width: 10%">
 			                                                        <div class="fancy-checkbox">
 			                                                            <label>
-			                                                                <input <%if (permissions.isWebPage1Read()) {%> checked<%}%> type="checkbox" name="wp1-read" id="wp1-read" class="admin-permission user-permission read">
+			                                                                <input <%if (permissions.isWebPage1Read()) {%> checked<%}%> value="true" type="checkbox" name="wp1-read" id="wp1-read" class="admin-permission user-permission read">
 			                                                                <span>&nbsp;</span>
 			                                                            </label>
 			                                                        </div>
@@ -469,7 +469,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage2Add()) {%> checked<%}%> type="checkbox" name="wp2-add" id="wp2-add" class="admin-permission user-permission add">
+		                                                                <input <%if (permissions.isWebPage2Add()) {%> checked<%}%> value="true" type="checkbox" name="wp2-add" id="wp2-add" class="admin-permission user-permission add">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -478,7 +478,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage2Delete()) {%> checked<%}%> type="checkbox" name="wp2-delete" id="wp2-delete" class="admin-permission delete" >
+		                                                                <input <%if (permissions.isWebPage2Delete()) {%> checked<%}%> value="true" type="checkbox" name="wp2-delete" id="wp2-delete" class="admin-permission delete" >
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -487,7 +487,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage2Modify()) {%> checked<%}%> type="checkbox" name="wp2-modify" id="wp2-modify" class="admin-permission user-permission modify">
+		                                                                <input <%if (permissions.isWebPage2Modify()) {%> checked<%}%> value="true" type="checkbox" name="wp2-modify" id="wp2-modify" class="admin-permission user-permission modify">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -495,7 +495,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage2Read()) {%> checked<%}%> type="checkbox" name="wp2-read" id="wp2-read" class="admin-permission user-permission read">
+		                                                                <input <%if (permissions.isWebPage2Read()) {%> checked<%}%> value="true" type="checkbox" name="wp2-read" id="wp2-read" class="admin-permission user-permission read">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -517,7 +517,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage3Add()) {%> checked<%}%> type="checkbox" name="wp3-add" id="wp3-add" class="admin-permission user-permission add" >
+		                                                                <input <%if (permissions.isWebPage3Add()) {%> checked<%}%> value="true" type="checkbox" name="wp3-add" id="wp3-add" class="admin-permission user-permission add" >
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -526,7 +526,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage3Delete()) {%> checked<%}%> type="checkbox" name="wp3-delete" id="wp3-delete" class="admin-permission delete">
+		                                                                <input <%if (permissions.isWebPage3Delete()) {%> checked<%}%> value="true" type="checkbox" name="wp3-delete" id="wp3-delete" class="admin-permission delete">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -535,7 +535,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage3Modify()) {%> checked<%}%> type="checkbox" name="wp3-modify" id="wp3-modify" class="admin-permission user-permission modify">
+		                                                                <input <%if (permissions.isWebPage3Modify()) {%> checked<%}%> value="true" type="checkbox" name="wp3-modify" id="wp3-modify" class="admin-permission user-permission modify">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>
@@ -543,7 +543,7 @@
 		                                                    <td style="width: 10%">
 		                                                        <div class="fancy-checkbox">
 		                                                            <label>
-		                                                                <input <%if (permissions.isWebPage3Read()) {%> checked<%}%> type="checkbox" name="wp3-read" id="wp3-read" class="admin-permission user-permission read">
+		                                                                <input <%if (permissions.isWebPage3Read()) {%> checked<%}%> value="true" type="checkbox" name="wp3-read" id="wp3-read" class="admin-permission user-permission read">
 		                                                                <span>&nbsp;</span>
 		                                                            </label>
 		                                                        </div>

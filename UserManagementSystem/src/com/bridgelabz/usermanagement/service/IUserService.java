@@ -20,4 +20,9 @@ public interface IUserService {
 
 	public UserPermissions getUserPermissions(int userId);
 
+	int updateUser(int userId, UserModel user);
+
+	int updatePermission(int userId, UserPermissions permissions);
+
+	
 }

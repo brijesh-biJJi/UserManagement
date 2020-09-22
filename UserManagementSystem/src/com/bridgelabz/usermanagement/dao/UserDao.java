@@ -127,29 +127,7 @@ public class UserDao {
 	        return status;  
 	}
 	
-	public int updateUser(UserModel u) {
-		
-		String updateQuery="update user set email=?, first_name=?, last_name=?, phone=?,address=?,verified=?, username=?,password=?,cpassword=?,dob=? where user_id=?";
-		  int status=0;  
-	        try{  
-	            Connection con=getConnection();  
-	            PreparedStatement ps=con.prepareStatement(updateQuery);
-	            ps.setString(1,u.getEmail());
-	            ps.setString(2, u.getFirst_name());
-	            ps.setString(3, u.getLast_name());
-	            ps.setLong(4,u.getPhone());
-	            ps.setString(5,u.getAddress());
-	            ps.setString(7,u.getUsername());
-	            ps.setString(8,u.getPassword());
-	            ps.setString(9,u.getCpassword());
-//	            ps.setString(11,u.getUser_id());
-	            status=ps.executeUpdate();  
-	              
-	            con.close();  
-	        }catch(Exception ex){ex.printStackTrace();}  
-	          
-	        return status;  
-	}
+	
 	
 
 	 
@@ -434,29 +412,58 @@ public class UserDao {
 		}
 		return null;
 	}  
+
 	
-	public int updateUserPermissions(int userId, boolean add_p, boolean delete_p, boolean modify_p, boolean read_p,
-			int webpage_id) 
-	{
-		String qry= "update user_permissions set add_p=?, delete_p=?, modify_p=?, read_p=?, where user_id=? and webpage_id=?";
-		Connection con=null;
-		PreparedStatement ps=null;
-		try {
-			con=getConnection();
-			ps = con.prepareStatement(qry);
-			ps.setBoolean(1, add_p);
-			ps.setBoolean(2, delete_p);
-			ps.setBoolean(3, modify_p);
-			ps.setBoolean(4, read_p);
-			ps.setInt(5, userId);
-			ps.setInt(6, webpage_id);
-			if(ps.executeUpdate() == 1)
-				return 1;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
+public int updateUser(int userId, UserModel u) {
+	PreparedStatement ps = null;
+	Connection con = null;
+		String updateQuery="update user set email=?, first_name=?, middle_name=?, last_name=?, phone=?,address=?, username=?,password=?, dob=?, country=?, userrole=?, status=?, gender=? where user_id=?";
+		    
+	        try{  
+	            con=getConnection();  
+	            ps=con.prepareStatement(updateQuery);
+	            ps.setString(1,u.getEmail());
+	            ps.setString(2, u.getFirst_name());
+	            ps.setString(3, u.getMiddle_name());
+	            ps.setString(4, u.getLast_name());
+	            ps.setLong(5,u.getPhone());
+	            ps.setString(6,u.getAddress());
+	            ps.setString(7,u.getUsername());
+	            ps.setString(8,u.getPassword());
+	            ps.setString(9, u.getDob());
+	            ps.setString(10, u.getCountry());
+	            ps.setString(11, u.getUser_role());
+	            ps.setString(12, u.getStatus());
+	            ps.setString(13, u.getGender());
+	            ps.setInt(14,userId );
+	            if(ps.executeUpdate() == 1)
+					return 1;  
+	        }catch(Exception ex){ex.printStackTrace();}  
+	          
+	        return 0;  
 	}
 
+public int updatePermission(int userId, boolean dashAdd, boolean dashDelete, boolean dashModify, boolean dashRead,
+		int webpageid) {
+	
+	String qry= "update user_permissions set add_p=?, delete_p=?, modify_p=?, read_p=?, where user_id=? and webpage_id=?";
+	Connection con=null;
+	PreparedStatement ps=null;
+	try {
+		con=getConnection();
+		ps = con.prepareStatement(qry);
+		ps.setBoolean(1, dashAdd);
+		ps.setBoolean(2, dashDelete);
+		ps.setBoolean(3, dashModify);
+		ps.setBoolean(4, dashRead);
+		ps.setInt(5, userId);
+		ps.setInt(6, webpageid);
+		if(ps.executeUpdate() == 1)
+			return 1;
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return 0;
+}
 }

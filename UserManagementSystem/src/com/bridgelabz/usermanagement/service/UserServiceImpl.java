@@ -96,6 +96,26 @@ public class UserServiceImpl implements IUserService {
 		permissions.setWebPage3Read(webPage3Permissions.get(3));
 		return permissions;
 	}
+
+
+	@Override
+	public int updateUser(int userId, UserModel user) {
+		return userDao.updateUser(userId, user);
+	}
+
+
+	@Override
+	public int updatePermission(int userId, UserPermissions permissions) {
+		System.out.println("userId "+userId);
+		System.out.println("permdash add"+permissions.isDashAdd());
+		userDao.updatePermission(userId,permissions.isDashAdd(),permissions.isDashDelete(),permissions.isDashModify(),permissions.isDashRead(),1);
+		userDao.updatePermission(userId, permissions.isSettingsAdd(), permissions.isSettingsDelete(), permissions.isSettingsModify(), permissions.isSettingsRead(), 2);
+		userDao.updatePermission(userId, permissions.isUsersInfoAdd(), permissions.isUsersInfoDelete(), permissions.isUsersInfoModify(), permissions.isUsersInfoRead(), 3);
+		userDao.updatePermission(userId, permissions.isWebPage1Add(), permissions.isWebPage1Delete(), permissions.isWebPage1Modify(), permissions.isWebPage1Read(), 4);
+		userDao.updatePermission(userId, permissions.isWebPage2Add(), permissions.isWebPage2Delete(), permissions.isWebPage2Modify(), permissions.isWebPage2Read(), 5);
+		return userDao.updatePermission(userId, permissions.isWebPage3Add(), permissions.isWebPage3Delete(), permissions.isWebPage3Modify(), permissions.isWebPage3Read(), 6);
+	
+	}
 	
 	
 }
