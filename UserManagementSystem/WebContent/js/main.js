@@ -36,7 +36,9 @@ $(function(){
 })
 
 
+
 function searchFunction() {
+	// Declare variables
   var searchValue, filter, tableId, tableRow, tableData, i, txtValue;
   
   searchValue = document.getElementById("searchInput");
@@ -45,6 +47,7 @@ function searchFunction() {
   tableId = document.getElementById("usersTable");
   tableRow = tableId.getElementsByTagName("tr");
   
+//Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tableRow.length; i++) {
 	  tableData = tableRow[i].getElementsByTagName("td")[1];
     if (tableData) {

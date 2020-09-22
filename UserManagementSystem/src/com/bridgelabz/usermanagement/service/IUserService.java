@@ -1,5 +1,7 @@
 package com.bridgelabz.usermanagement.service;
 
+import java.util.List;
+
 import com.bridgelabz.usermanagement.model.UserModel;
 import com.bridgelabz.usermanagement.model.UserPermissions;
 
@@ -9,5 +11,13 @@ public interface IUserService {
 	int setPermission(UserPermissions permissions, String username);
 
 	public int deleteUser(int userid);
+
+	public Long getTotalUsers();
+
+	public List<UserModel> getUsersByPageSize(int i, int j);
+
+	public UserModel getUserDetails(int userId);
+
+	public UserPermissions getUserPermissions(int userId);
 
 }

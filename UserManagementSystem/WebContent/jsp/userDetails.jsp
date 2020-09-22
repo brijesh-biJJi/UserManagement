@@ -64,13 +64,12 @@
 				                    </div>
 				                </div>
                         		<div class="panel-body">
+                        		<form action="UsersList" method="post" name="usersList">
                             		<div class="row" style="display: flex; justify-content: space-between; flex-wrap: nowrap;">
 				                        <div class="col-md-2 col-xs-4">
-				                            <select id="pageSize" class="form-control btn-panel-refresh" onchange="changePagesize(this);">
-				                                <option>10</option>
-				                                <option>20</option>
-				                                <option>50</option>
-				                                <option>100</option>
+				                            <select id="pageSize" name="pageSize" class="form-control btn-panel-refresh"  onchange="javascript:document.usersList.submit();">
+				                                <option value="10">10</option>
+				                                <option value="20">20</option>
 				                            </select>
 				                        </div>
 				                        <div class="col-md-3 col-xs-8 pull-right">
@@ -94,7 +93,15 @@
                     								</tr>
                     							</thead>
                     							<tbody>	
-                    								<%List<UserModel> usersList= (List<UserModel>) session.getAttribute("usersList"); 
+                    							<%
+					                                    List<UserModel> usersList = (List<UserModel>) request.getAttribute("usersList");
+					                                    if(usersList.size()==0) {
+					                                %>
+					                                <tr>
+					                                    <td align="center" valign="middle" style="width:4%;color: #5e6773" colspan="8">No Data Available.</td>
+					                                </tr>
+					                                <%}else {
+                    								
                         								for (UserModel user: usersList) { 
                         							%>
                         							<tr>
@@ -121,10 +128,10 @@
 																class="ti-unlock text-success">
 														</label></td>
 														<td align="center" style="width:8%;">
-				                                            <a id="editUser" style="cursor: pointer; " data-user-id="1" title="Edit User Details">
+				                                            <a id="editUser" style="cursor: pointer; " href="EditUser?userId=<%=user.getUser_id()%>" title="Edit User Details">
 				                                                <i class="ti-pencil-alt" style="font-size:medium ; color: #00aaff;"></i>
 				                                            </a>
-				                                            <a id="deleteUser" style="cursor: pointer;" data-user-id="1" title="Delete User Details" data-modelid="<%=user.getUser_id()%>">
+				                                            <a id="deleteUser" style="cursor: pointer;"  title="Delete User Details" data-modelid="<%=user.getUser_id()%>">
 				                                                <i class="ti-trash text-danger" style="font-size: medium"></i>
 				                                            </a>
 				                                            
@@ -132,37 +139,82 @@
 																 <div id="<%=user.getUser_id()%>" class="modal-fade">
 				  													<div class="dialog-box">
 				                                                            <h5 style="margin-bottom: 1rem">Are you sure?</h5>
-				                                                            <a id="deleteUserModal" href="DeleteUser?userid=<%=user.getUser_id()%>" class="btn btn-success" style="border-radius: 3px; padding: 6px 22px; background-color: #41B314;border-color: #3ca512;" data-user-id="1" data-dismiss="modal">Yes</a>
+				                                                            <a id="deleteUserModal" href="DeleteUser?userid=<%=user.getUser_id()%>" class="btn btn-success" style="border-radius: 3px; padding: 6px 22px; background-color: #41B314;border-color: #3ca512;"  data-dismiss="modal">Yes</a>
 				                                                            <input type="button" class="btn btn-danger close-modal" style="border-radius: 3px; padding: 6px 22px; background-color: #F9354C;border-color: #f9263f;" data-dismiss="modal" value="No">                                                            
 				  													</div>
 																</div>
 														</td>	
                         							</tr>
-                        							<% } %>	
+                        							<% 
+                        								}
+					                                }
+                        							%>	
                     							</tbody>
                     						</table>
+                    						</br>
+                    						 <%
+                    				 		
+					                    int totalUserByPage = (int) request.getAttribute("totalUserByPage");
+                    				 	Long totalUsersCount = (Long) request.getAttribute("totalUsersCount");
+                    				 	int noOfPages = (int) request.getAttribute("noOfPages");
+					                    
+					                 %>
+					                 
+					                 <div style="display: flex;width: 100%; flex-wrap: nowrap;">
+					                    	<b style="margin:5px 10px ">Records ${start} - ${end} of ${totalUsersCount}</b>
+					                    	<nav>
+					                    		<ul class="pagination  pagination-sm">
+					                    			<li class="page-item">
+												      <a class="page-link activee" href="#" aria-label="Previous">
+												        <span aria-hidden="true">&laquo;</span>
+												        <span class="sr-only">Previous</span>
+												      </a>
+												    </li>
+					                 <% 
+					                 	
+					                    for(int i=0; i<=noOfPages; i++) 
+					                    {
+					                  %>
+					                  				<li class="page=item" style="margin: 0 5px">
+					                    				<button class="page-link" type="submit"  name="active-page-id" value="<%=i+1 %>"><%=i+1%></button>
+					                    			</li>
+					                  <%
+					                  	}
+					                  %>
+					                  				<li class="page-item">
+												      <a class="page-link activee" href="#" aria-label="Previous">
+												        <span aria-hidden="true">&raquo;</span>
+												        <span class="sr-only">Next</span>
+												      </a>
+												    </li>
+					                  			</ul>
+					                    	</nav>
+					                    </div>
                     					</div>
                     				</div>
+                    				
+                    			</form>	
                             	</div>
                         		
                     		</div>
                 		</div>
                 		
-            		</div>						
+            		</div>
+					<footer>
+                		<div class="container-fluid" style="display: flex; justify-content: flex-end; padding: 10px 20px; margin-top: 10px ">
+                    
+							<p class="copyright" >
+   								©
+    						<script type="text/javascript">document.write(new Date().getFullYear())</script>2020
+    						<a href="https://codecanyon.net/user/mimtiyaz" target="_blank">mimtiyaz - CodeCanyon</a>
+							</p>
+
+                		</div>
+            	</footer>					
         		</div>
         		
 				
-				<footer>
-                <div class="container-fluid" style="display: flex; justify-content: flex-end; padding: 10px 20px; margin-top: 10px ">
-                    
-				<p class="copyright" >
-   					©
-    			<script type="text/javascript">document.write(new Date().getFullYear())</script>2020
-    			<a href="https://codecanyon.net/user/mimtiyaz" target="_blank">mimtiyaz - CodeCanyon</a>
-				</p>
-
-                </div>
-            </footer>
+				
 			</div>
 			<!--END MAIN -->
 			
@@ -171,5 +223,19 @@
 	</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 <script type="text/javascript" src ="${pageContext.request.contextPath}/js/main.js"></script>
+<script type="text/javascript">
+document.getElementById("pageSize").value = "${totalUserByPage}";
+let pages = document.getElementsByName("active-page-id");
+console.log('page size ',pages.length) 
+for(var i=0; i<pages.length; i++) {
+	
+	console.log('page value ', pages[i].value)
+    if(pages[i].value === "${active}") {
+    	console.log('page value ',pages[i].value)
+    	
+        pages[i].className = "page-link activee";
+    }
+}
+</script>
 </body>
 </html>

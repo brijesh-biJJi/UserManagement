@@ -51,4 +51,13 @@
         <servlet-name>userdetails</servlet-name>
         <url-pattern>/userdetails</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>editUser</servlet-name>
+        <jsp-file>/jsp/editUser.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editUser</servlet-name>
+        <url-pattern>/edituser</url-pattern>
+    </servlet-mapping>
 </web-app>

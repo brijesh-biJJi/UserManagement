@@ -231,56 +231,6 @@ public class UserDao {
 		return 0;
 	}
 	
-	 public List<UserModel> getAllUser(){  
-		 Connection con=null;
-		 PreparedStatement ps =null;
-	        List<UserModel> list=new ArrayList<UserModel>();  
-	          
-	        try{  
-	            con=getConnection();  
-	            ps=con.prepareStatement("select * from user");  
-	            ResultSet rs=ps.executeQuery();  
-	            while(rs.next()){  
-	                UserModel u = new UserModel();  
-	                u.setUser_id(rs.getInt(1)); 
-	                u.setEmail(rs.getString(2));
-	                u.setFirst_name(rs.getString(3));  
-	                u.setLast_name(rs.getString(5));  
-	                u.setPhone(rs.getLong(6));
-	                u.setAddress(rs.getString(7));
-	                u.setUsername(rs.getString(8));
-	                u.setDob(rs.getString(11));
-	                u.setCountry(rs.getString(12));
-	                u.setUser_role(rs.getString(13));
-	                u.setStatus(rs.getString(14));
-	                u.setGender(rs.getString(16));
-	                list.add(u);  
-	            }  
-	            System.out.println("user List"+list);
-	            return list;  
-	        }catch(Exception e){e.printStackTrace();}  
-	        finally {
-				if(ps!=null) {
-				try {
-					ps.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
-				}
-				
-				if(con!=null) {
-					try {
-						con.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-	          
-	        return list;  
-	    }
 
 	public int deleteUser(int userid) {
 		Connection con=null;
@@ -320,8 +270,193 @@ public class UserDao {
 			}
 		}
         return status;  
+	}
+
+	public Long getTotalUsers() {
+		String numberOfUsers = "select count(*) from user";
+		Connection con=null;
+		PreparedStatement ps=null; 
+		 try{  
+			 
+			 con=getConnection(); 
+			 ps=con.prepareStatement(numberOfUsers);  
+			 ResultSet resultSet = ps.executeQuery();
+	            if (resultSet.next()) {
+	                return resultSet.getLong(1);
+	            }
+        }catch(Exception e){e.printStackTrace();}  
+        finally {
+			if(ps!=null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			}
+			
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+	}
+
+	public List<UserModel> getUsersByPageSize(int start, int totalUserByPage) {
+		 String getUsers = "select * from user limit ?,?";
+		 Connection con=null;
+		 PreparedStatement ps =null;
+	        List<UserModel> usersList=new ArrayList<UserModel>();  
+	        try {
+	        	con=getConnection(); 
+	            ps= con.prepareStatement(getUsers);
+	            ps.setInt(1, start);
+	            ps.setInt(2, totalUserByPage);
+	            ResultSet rs = ps.executeQuery();
+	            while (rs.next()) {
+	            	UserModel u = new UserModel();  
+	            	u.setUser_id(rs.getInt(1)); 
+	                u.setEmail(rs.getString(2));
+	                u.setFirst_name(rs.getString(3));  
+	                u.setLast_name(rs.getString(5));  
+	                u.setPhone(rs.getLong(6));
+	                u.setAddress(rs.getString(7));
+	                u.setUsername(rs.getString(8));
+	                u.setDob(rs.getString(11));
+	                u.setCountry(rs.getString(12));
+	                u.setUser_role(rs.getString(13));
+	                u.setStatus(rs.getString(14));
+	                u.setGender(rs.getString(16));
+	                usersList.add(u);  
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return usersList;
+	}
+
+	public UserModel getUserDetails(int userId) {
+		String getUserQry="select * from user where user_id=?";
+		Connection con=null;
+		 PreparedStatement ps =null; 
+		 UserModel u = new UserModel();  
+	        try{  
+	            con=getConnection();  
+	            ps=con.prepareStatement(getUserQry);  
+	            ps.setInt(1, userId);
+	            ResultSet rs=ps.executeQuery();  
+	            while(rs.next()){  
+	                u.setUser_id(rs.getInt(1)); 
+	                u.setEmail(rs.getString(2));
+	                u.setFirst_name(rs.getString(3));
+	                u.setMiddle_name(rs.getString(4));
+	                u.setLast_name(rs.getString(5));  
+	                u.setPhone(rs.getLong(6));
+	                u.setAddress(rs.getString(7));
+	                u.setUsername(rs.getString(8));
+	                u.setPassword(rs.getString(9));
+	                u.setDob(rs.getString(11));
+	                u.setCountry(rs.getString(12));
+	                u.setUser_role(rs.getString(13));
+	                u.setStatus(rs.getString(14));
+	                u.setGender(rs.getString(16));
+	            }  
+	            System.out.println("User Details "+u);
+	            return u;  
+	        }catch(Exception e){e.printStackTrace();}  
+	        finally {
+				if(ps!=null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				}
+				
+				if(con!=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+	          
+	        return u;  
+	}
+
+	public List<Boolean> getUserPermissions(int userId, int webpageId) {
+		String getUserPermissionsQry = "select * from user_permissions where user_id = ? and webpage_id = ?";
+		List<Boolean> permissions = new ArrayList<>();
+		Connection con=null;
+		 PreparedStatement ps =null; 
+		try {
+			con=getConnection();
+			ps = con.prepareStatement(getUserPermissionsQry);
+			ps.setLong(1, userId);
+			ps.setInt(2, webpageId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				permissions.add(rs.getBoolean(3));
+				permissions.add(rs.getBoolean(4));
+				permissions.add(rs.getBoolean(5));
+				permissions.add(rs.getBoolean(6));
+			}
+			return permissions;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(ps!=null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			}
+			
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
 	}  
 	
-	
+	public int updateUserPermissions(int userId, boolean add_p, boolean delete_p, boolean modify_p, boolean read_p,
+			int webpage_id) 
+	{
+		String qry= "update user_permissions set add_p=?, delete_p=?, modify_p=?, read_p=?, where user_id=? and webpage_id=?";
+		Connection con=null;
+		PreparedStatement ps=null;
+		try {
+			con=getConnection();
+			ps = con.prepareStatement(qry);
+			ps.setBoolean(1, add_p);
+			ps.setBoolean(2, delete_p);
+			ps.setBoolean(3, modify_p);
+			ps.setBoolean(4, read_p);
+			ps.setInt(5, userId);
+			ps.setInt(6, webpage_id);
+			if(ps.executeUpdate() == 1)
+				return 1;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }

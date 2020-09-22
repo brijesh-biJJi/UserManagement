@@ -184,6 +184,15 @@ public class UserModel {
 		this.creator_at = creator_at;
 	}
 
+	@Override
+	public String toString() {
+		return "UserModel [user_id=" + user_id + ", email=" + email + ", first_name=" + first_name + ", middle_name="
+				+ middle_name + ", last_name=" + last_name + ", dob=" + dob + ", gender=" + gender + ", phone=" + phone
+				+ ", address=" + address + ", username=" + username + ", password=" + password + ", cpassword="
+				+ cpassword + ", country=" + country + ", user_role=" + user_role + ", status=" + status + ", image="
+				+ image + ", creator_at=" + creator_at + "]";
+	}
+
 	
 
 }

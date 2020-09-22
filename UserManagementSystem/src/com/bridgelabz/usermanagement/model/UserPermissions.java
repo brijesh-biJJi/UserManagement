@@ -355,4 +355,21 @@ public class UserPermissions {
 		this.webPage3Read = webPage3Read;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "UserPermissions [dashAdd=" + dashAdd + ", dashDelete=" + dashDelete + ", dashModify=" + dashModify
+				+ ", dashRead=" + dashRead + ", settingsAdd=" + settingsAdd + ", settingsDelete=" + settingsDelete
+				+ ", settingsModify=" + settingsModify + ", settingsRead=" + settingsRead + ", usersInfoAdd="
+				+ usersInfoAdd + ", usersInfoDelete=" + usersInfoDelete + ", usersInfoModify=" + usersInfoModify
+				+ ", usersInfoRead=" + usersInfoRead + ", webPage1Add=" + webPage1Add + ", webPage1Delete="
+				+ webPage1Delete + ", webPage1Modify=" + webPage1Modify + ", webPage1Read=" + webPage1Read
+				+ ", webPage2Add=" + webPage2Add + ", webPage2Delete=" + webPage2Delete + ", webPage2Modify="
+				+ webPage2Modify + ", webPage2Read=" + webPage2Read + ", webPage3Add=" + webPage3Add
+				+ ", webPage3Delete=" + webPage3Delete + ", webPage3Modify=" + webPage3Modify + ", webPage3Read="
+				+ webPage3Read + "]";
+	}
+
+	
 }

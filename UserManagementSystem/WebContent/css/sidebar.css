@@ -51,7 +51,7 @@ a {
 }
 
 .sub-menu {
-    margin-left: 20px;
+    margin-left: 10px;
     font-size: 10px;
     font-weight: lighter;
     display: none;
@@ -79,10 +79,8 @@ a {
 	font-size:12px;
 	border-radius: .25em;
 	color: #fff;
-	
 	top: 0;
     float: right;
-    display: block;
     padding: 3px 7px;
 }
 
