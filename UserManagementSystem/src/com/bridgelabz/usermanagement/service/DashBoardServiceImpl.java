@@ -1,7 +1,10 @@
 package com.bridgelabz.usermanagement.service;
 
+import java.util.List;
+
 import com.bridgelabz.usermanagement.dao.DashboardDao;
 import com.bridgelabz.usermanagement.dao.UserDao;
+import com.bridgelabz.usermanagement.model.UserModel;
 
 public class DashBoardServiceImpl implements IDashboard{
 	
@@ -22,5 +25,10 @@ public class DashBoardServiceImpl implements IDashboard{
 	public Long getTotalUsersByStatus(String status) {
         return dashDao.getTotalUsersByStatus(status);
     }
+
+	@Override
+	public List<UserModel> getLatestRegistrations(int totalUser) {
+		 return dashDao.getLatestRegistrations(totalUser);
+	}
 	
 }

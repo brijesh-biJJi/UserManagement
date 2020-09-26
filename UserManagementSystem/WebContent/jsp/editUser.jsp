@@ -24,7 +24,7 @@
 	response.setHeader("Cache-Control","no-chache,no-store,must-revalidate");//HTTP 1.1
 	response.setHeader("Pragma","no-cache"); //HTTP 1.0
 	response.setDateHeader ("Expires", 0);
-	if(session.getAttribute("username")==null)
+	if(session.getAttribute("user")==null)
 	{
 		response.sendRedirect("login");
 	}

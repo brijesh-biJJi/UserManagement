@@ -1,6 +1,8 @@
 package com.bridgelabz.usermanagement.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bridgelabz.usermanagement.model.UserModel;
 import com.bridgelabz.usermanagement.service.DashBoardServiceImpl;
 import com.bridgelabz.usermanagement.service.IDashboard;
 import com.bridgelabz.usermanagement.service.IUserService;
@@ -40,7 +43,7 @@ public class Dashboard extends HttpServlet {
         Long totalUsers = dashboardService.getTotalUsers();
         Long totalActiveUsers = dashboardService.getTotalUsersByStatus("active");
         Long totalInactiveUsers = dashboardService.getTotalUsersByStatus("inactive");
-        
+        List<UserModel> latestRegistrations = dashboardService.getLatestRegistrations(10);
         
         HttpSession session = request.getSession();
         
@@ -48,6 +51,7 @@ public class Dashboard extends HttpServlet {
         session.setAttribute("totalUsers",totalUsers);
         session.setAttribute("totalActiveUsers",totalActiveUsers);
         session.setAttribute("totalInactiveUsers",totalInactiveUsers);
+        session.setAttribute("latestRegistrations",latestRegistrations);
         
         response.sendRedirect("dashboard");
 	}

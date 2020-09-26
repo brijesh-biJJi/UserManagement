@@ -135,10 +135,49 @@
 		                        <div class="panel-heading">
 		                            <h4 class="panel-title">Latest Registration</h4>
 		                            <div class="right"  style="float: right;height: 25px">
-		                                <span class="link"><a href="#">Load More</a></span>
+		                                <span class="link"><a href="UsersList?action=displayUsers">Load More</a></span>
 		                            </div>
 		                        </div>
-		                        
+		                        <div class="slimScrollDiv" style="position: relative; overflow: hidden;width: auto; height: 430px;">
+		                        <div class="panel-body no-padding" style="overflow: hidden;  width: auto; height: 430px;">
+		                            <div >
+										<table class="table table-hover" cellspacing="0" id="latestRegistration" style="width:100%;border-collapse:collapse;">
+											<tbody>
+												
+													 <%
+				                                        
+				                                            List<UserModel> latestRegistrations = (List<UserModel>) session.getAttribute("latestRegistrations");
+				                                        	for (UserModel reg:latestRegistrations) {
+				                                      %>
+				                                    
+				                               			<tr>
+				                               				<td>
+				                               					<ul class="list-unstyled list-positions">
+				                               						<li class="position up clearfix">
+				                               							<div class="account">
+					                                                        <div class="user">
+					                                                            <img src="${pageContext.request.contextPath}/img/user.png" alt="mahmoud" class="user-picture">
+					                                                        </div>
+					                                                        <div class="right">
+					                                                            <a class="name" href="EditUser?userId=<%=reg.getUser_id()%>">
+					                                                                <%=reg.getFirst_name()+' '+reg.getLast_name()%>
+					                                                            </a>
+					                                                            <span class="username"><%=reg.getCreator_at()%></span>
+					                                                        </div>
+					                                                    </div>
+				                               						</li>
+				                               					</ul>
+				                               				</td>
+                                    				</tr>
+												<%
+                                                }
+				                                %>     	
+											</tbody>
+										</table>
+									</div>
+                            
+                        </div>
+                         </div>
 		                    </div>
 		                </div>
             		</div>

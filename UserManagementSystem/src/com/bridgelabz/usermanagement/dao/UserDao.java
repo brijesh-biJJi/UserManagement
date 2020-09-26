@@ -504,4 +504,8 @@ public List<Boolean> getPagePermissions(int userId, int pageId) {
     }
     return null;
 }
+
+
+
+
 }

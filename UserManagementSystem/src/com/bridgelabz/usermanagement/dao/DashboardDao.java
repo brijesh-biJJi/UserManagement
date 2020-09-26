@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -125,5 +127,31 @@ public Connection getConnection() {
 	            e.printStackTrace();
 	        }
 	        return null;
+	}
+	
+	public List<UserModel> getLatestRegistrations(int totalUser) {
+		String getLatestRegistration = "select * from" +
+	            " user order by user_id desc limit 0,?";
+		 List<UserModel> usersList = new ArrayList<>();
+		 Connection con=null;
+			PreparedStatement ps=null; 
+			 try {
+				 con=getConnection(); 
+	            DateFormat df = new SimpleDateFormat("MMM dd yyyy hh:mm a");
+	            ps = con.prepareStatement(getLatestRegistration);
+	            ps.setInt(1,totalUser);
+	            ResultSet rs = ps.executeQuery();
+	            while (rs.next()) {
+	                UserModel u = new UserModel();
+	                u.setUser_id(rs.getInt(1)); 
+	                u.setFirst_name(rs.getString(3));
+	                u.setLast_name(rs.getString(5)); 
+	                u.setCreator_at(df.format(rs.getDate(10)));
+	                usersList.add(u);
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return usersList;
 	}
 }
