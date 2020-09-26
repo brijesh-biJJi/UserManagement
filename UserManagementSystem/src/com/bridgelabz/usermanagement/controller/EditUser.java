@@ -125,7 +125,8 @@ public class EditUser extends HttpServlet {
 					request.setAttribute("updateduser", "User Updated Successfully.....");
 				}
 	     }
-	     request.getRequestDispatcher("edituser").forward(request, response);
+//	     request.getRequestDispatcher("edituser").forward(request, response);
+	     response.sendRedirect("EditUser?userId="+userId);
 	}
 
 }

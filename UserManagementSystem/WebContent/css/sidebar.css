@@ -19,6 +19,7 @@ a {
     height: 100vh;
     width: 20%;   
     padding: 10px; 
+    transition:0.5s;
 }
 
 
@@ -95,4 +96,10 @@ a {
 .icon-submenu {
     font-size: 10px;
     color: #a0aeba;
+}
+
+@media only screen and (max-width: 600px) {
+  .sidebar {
+  	width: 350px;
+  }
 }

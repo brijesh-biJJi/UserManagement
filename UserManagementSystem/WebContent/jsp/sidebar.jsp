@@ -13,7 +13,7 @@
 <body>
 	<div class="sidebar" id="sidebarId">
 					
-					<a href="#" id="dashboard-id">
+					<a href="dashboard" id="dashboard-id">
 						<i class="ti-dashboard"> </i>
 						<span>Dashboard </span>
 						<span class="label label-success">UPDATED</span>

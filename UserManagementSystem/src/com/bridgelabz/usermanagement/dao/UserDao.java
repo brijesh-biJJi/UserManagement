@@ -338,13 +338,14 @@ public class UserDao {
 	                u.setAddress(rs.getString(7));
 	                u.setUsername(rs.getString(8));
 	                u.setPassword(rs.getString(9));
+	                u.setCpassword(rs.getString(10));
 	                u.setDob(rs.getString(11));
 	                u.setCountry(rs.getString(12));
 	                u.setUser_role(rs.getString(13));
 	                u.setStatus(rs.getString(14));
 	                u.setGender(rs.getString(16));
 	            }  
-	            System.out.println("User Details "+u);
+	            System.out.println("User Details in dao"+u);
 	            return u;  
 	        }catch(Exception e){e.printStackTrace();}  
 	        finally {
@@ -446,7 +447,7 @@ public int updateUser(int userId, UserModel u) {
 public int updatePermission(int userId, boolean dashAdd, boolean dashDelete, boolean dashModify, boolean dashRead,
 		int webpageid) {
 	
-	String qry= "update user_permissions set add_p=?, delete_p=?, modify_p=?, read_p=?, where user_id=? and webpage_id=?";
+	String qry= "update user_permissions set add_p=?, delete_p=?, modify_p=?, read_p=? where user_id=? and webpage_id=?";
 	Connection con=null;
 	PreparedStatement ps=null;
 	try {
@@ -458,12 +459,49 @@ public int updatePermission(int userId, boolean dashAdd, boolean dashDelete, boo
 		ps.setBoolean(4, dashRead);
 		ps.setInt(5, userId);
 		ps.setInt(6, webpageid);
-		if(ps.executeUpdate() == 1)
-			return 1;
+		return ps.executeUpdate();
 		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
 	return 0;
+}
+
+public void updateUserLogin(int user_id) {
+	String updateUserLogin = "update user_login_history set last_login = now(), total_login_attempt = 0 where user_id = ? ";
+	Connection con=null;
+	PreparedStatement ps=null;
+	try {
+		con=getConnection();
+        ps = con.prepareStatement(updateUserLogin);
+        ps.setLong(1, user_id);
+        ps.executeUpdate();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+public List<Boolean> getPagePermissions(int userId, int pageId) {
+	String pagePermissions = "select * from user_permissions where user_id=? and webpage_id=?";
+	List<Boolean> permissions = new ArrayList<>();
+	Connection con=null;
+	PreparedStatement ps=null;
+	try {
+		con=getConnection();
+        ps = con.prepareStatement(pagePermissions);
+        ps.setInt(1, userId);
+        ps.setInt(2,pageId);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            permissions.add(rs.getBoolean(3));
+			permissions.add(rs.getBoolean(4));
+			permissions.add(rs.getBoolean(5));
+			permissions.add(rs.getBoolean(6));
+            return permissions;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return null;
 }
 }

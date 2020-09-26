@@ -24,5 +24,9 @@ public interface IUserService {
 
 	int updatePermission(int userId, UserPermissions permissions);
 
+	public void updateUserLogin(int user_id);
+
+	public List<Boolean> getPagePermissions(int userId, int i);
+
 	
 }

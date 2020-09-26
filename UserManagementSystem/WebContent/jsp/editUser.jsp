@@ -47,7 +47,7 @@
 			<div class="main-content" style="margin-bottom: 50px; padding-bottom: 50px">
 				<div class="content-heading">
             		<div class="heading-left">
-            			New User
+            			User Information
             		</div>
             		<div class="heading-right">
 	                    <a href="dashboard"><i class="fa fa-home"></i>Home&nbsp; </a>
@@ -107,7 +107,7 @@
                                 		<div class="col-md-4 col-sm-6 col-xs-12">
                                     		<div class="form-group">
                                         		<label for="ddlCountry" class="control-label">Country</label>
-                                        			<select name="country" id="country" value="<%=user.getCountry()%>" tabindex="-1" class="form-control"  style="width:100%;" >
+                                        			<select name="country" id="country"  tabindex="-1" class="form-control"  style="width:100%;" >
 														<option value="" disabled selected>--- Select ---</option>
 														<option value="India">India</option>
 														<option value="Kuwait">Kuwait</option>
@@ -165,7 +165,7 @@
 		                                    <div class="form-group">
 		                                        <label for="txtPassword" class="control-label">Password</label>
 		                                        <div class="hideShowPassword-wrapper" style="position: relative; display: block; vertical-align: baseline; margin: 0px;">
-		                                        <input name="password" type="password" id="password" required tabindex="12" class="form-control password hideShowPassword-field" title="The password and it's confirm are not the same" style="margin: 0px; padding-right: 49px;"><button type="button" role="button" aria-label="Show Password" title="Show Password" tabindex="0" class="hideShowPassword-toggle hideShowPassword-toggle-show" aria-pressed="false" style="position: absolute; right: 0px; top: 50%; margin-top: -10.5px;">Show</button></div>
+		                                        <input name="password" type="password" id="password" value="<%=user.getPassword()%>" required tabindex="12" class="form-control password hideShowPassword-field" title="The password and it's confirm are not the same" style="margin: 0px; padding-right: 49px;"><button type="button" role="button" aria-label="Show Password" title="Show Password" tabindex="0" class="hideShowPassword-toggle hideShowPassword-toggle-show" aria-pressed="false" style="position: absolute; right: 0px; top: 50%; margin-top: -10.5px;">Show</button></div>
 		                                    </div>
 		                                </div>
 		                                <div class="col-md-4 col-sm-6 col-xs-12">

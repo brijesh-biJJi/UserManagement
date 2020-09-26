@@ -116,6 +116,23 @@ public class UserServiceImpl implements IUserService {
 		return userDao.updatePermission(userId, permissions.isWebPage3Add(), permissions.isWebPage3Delete(), permissions.isWebPage3Modify(), permissions.isWebPage3Read(), 6);
 	
 	}
+
+
+	@Override
+	public void updateUserLogin(int user_id) {
+		UserDao userDao = new UserDao();
+		userDao.updateUserLogin(user_id);
+	}
+
+
+	@Override
+	public List<Boolean> getPagePermissions(int userId, int pageId) {
+		UserDao userDao = new UserDao();
+	    List<Boolean> permissions = userDao.getPagePermissions(userId,pageId);
+	    if(permissions != null)
+	    	return permissions;
+		return null;
+	}
 	
 	
 }
